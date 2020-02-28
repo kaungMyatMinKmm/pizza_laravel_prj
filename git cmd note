@@ -1,0 +1,16 @@
+git init
+
+git status 
+
+red statements appear
+
+git add .
+
+git status
+
+green statements appear
+
+git commit -m "first comment"
+
+git push -u origin master
+
