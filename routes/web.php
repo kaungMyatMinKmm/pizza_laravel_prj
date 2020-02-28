@@ -18,5 +18,5 @@ Route::get('/', function () {
 Route::get('dashboard', 'BackendController@dashboard');
 
 Route::get('/hello',function(){
-	echo "i am get";
+	echo "i am getting";
 })
