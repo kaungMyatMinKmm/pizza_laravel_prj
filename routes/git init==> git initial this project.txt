@@ -1,0 +1,38 @@
+git init==> git initial this project
+
+git status
+(Red statmement apppear)
+
+git add .
+
+git status
+(Red statement changed to Green statement)
+
+git commit -m "Controller added"
+
+git push -u origin master
+
+
+//
+
+git init 
+
+=>git status
+
+	if(red light)
+
+	git add .
+
+	git status
+
+	Red to Green changed
+
+=>git status
+	
+	if(green light)
+
+git commit -m "comment"
+
+git pull
+
+
