@@ -8,7 +8,7 @@ class BackendController extends Controller
 {
     public function dashboard($value='')
     {
-    	$name="heelo world";
-    	return view('backend.dashboard',compact('name'));
+    	
+    	return view('backend.dashboard');
     }
 }

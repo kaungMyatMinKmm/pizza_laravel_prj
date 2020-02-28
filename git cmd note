@@ -10,7 +10,7 @@ git status
 
 green statements appear
 
-git commit -m "first comment"
+git commit -m "first comment"(don't need after pull)
 
 git push -u origin master
 
