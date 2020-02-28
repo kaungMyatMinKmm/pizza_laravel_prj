@@ -14,3 +14,28 @@ git commit -m "first comment"
 
 git push -u origin master
 
+
+
+//Pull From Git
+
+=> git init
+
+
+git status
+
+if (red)
+git add .
+
+git status
+
+red to green
+
+
+
+-git status
+
+if (green light)
+git commit -m "comment"
+
+git pull
+
