@@ -14,6 +14,13 @@ class ProductRecipe extends Migration
     public function up()
     {
         //
+         Schema::create('product_recipe', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('recipe_id');
+            
+            $table->timestamps();
+        });
     }
 
     /**

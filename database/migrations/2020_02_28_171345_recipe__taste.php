@@ -14,6 +14,12 @@ class RecipeTaste extends Migration
     public function up()
     {
         //
+         Schema::create('recipe_taste', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('recipe_id');
+            $table->unsignedBigInteger('taste_id');
+            $table->timestamps();
+        });
     }
 
     /**

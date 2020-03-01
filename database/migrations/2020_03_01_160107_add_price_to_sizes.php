@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSizesTable extends Migration
+class AddPriceToSizes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateSizesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sizes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('photo');
-            $table->timestamps();
+        Schema::table('sizes', function (Blueprint $table) {
+            //
+            $table->integer('price');
         });
     }
 
@@ -28,6 +26,8 @@ class CreateSizesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sizes');
+        Schema::table('sizes', function (Blueprint $table) {
+            //
+        });
     }
 }
