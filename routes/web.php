@@ -16,5 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard', 'BackendController@dashboard');
+Route::resource('categories','CategoryController');
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
