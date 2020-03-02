@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -14,6 +16,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $products = Product::all();
+        return view('backend.products.index',compact('products'));
     }
 
     /**
@@ -24,6 +28,10 @@ class ProductController extends Controller
     public function create()
     {
         //
+
+        $categories = Category::all();
+        return view ('backend.products.create',compact('categories'));
+
     }
 
     /**
@@ -35,6 +43,33 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            "name"=>"required|min:3|max:191",
+            "price"=>"required|min:4|max:6",
+            "codeno"=>"required",
+            "photo"=>"required|mimes:jpeg,jpg,png",
+            
+        ]);
+
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $uploadDir = public_path().'/storage/product/';
+            $name=time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($uploadDir,$name);
+            $path='/storage/product/'.$name;
+        }
+
+        $product = New Product;
+
+        $product->product_name = request ('name');
+        $product->price = request('price');
+        $product->code_no = request('codeno');
+        $product->photo = $path;
+        $product->category_id= request('category');
+        $product->save();
+
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -57,6 +92,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+
+        $products= Product::find($id);
+        $categories= Category::all();
+        return view('backend.products.edit',compact('products','categories'));
     }
 
     /**
@@ -69,6 +108,33 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $request->validate([
+            "name"=>"required|min:3|max:191",
+            "price"=>"required|min:4|max:6",
+            "codeno"=>"required",
+            "photo"=>"required|mimes:jpeg,jpg,png"
+            
+        ]);
+
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $uploadDir = public_path().'/storage/product/';
+            $name=time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($uploadDir,$name);
+            $path='/storage/product/'.$name;
+        }
+
+        $product = Product::find($id);
+
+        $product->product_name = request ('name');
+        $product->price = request('price');
+        $product->code_no = request('codeno');
+        $product->photo = $path;
+        $product->category_id= request('category');
+        $product->save();
+
+
+         return redirect()->route('products.index');
     }
 
     /**
@@ -80,5 +146,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }

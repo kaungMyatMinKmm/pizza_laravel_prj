@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('dashboard', 'BackendController@dashboard');
 Route::resource('categories','CategoryController');
+Route::resource('products','ProductController');
 
 
 Auth::routes();

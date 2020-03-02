@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-10">
 						<h4 class="m-0 font-weight-bold text-primary"> 
-			            	Categories Create Form 
+			            	Categories Edit Form 
 			            </h4>
 					</div>
 
