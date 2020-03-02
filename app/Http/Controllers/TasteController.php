@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Taste;
 
 class TasteController extends Controller
 {
@@ -13,7 +14,8 @@ class TasteController extends Controller
      */
     public function index()
     {
-        //
+        $tastes = Taste::all();
+        return view('backend.tastes.index',compact('tastes'));
     }
 
     /**
@@ -23,7 +25,7 @@ class TasteController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.tastes.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class TasteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "taste" => 'required|min:4:max:191'
+
+
+        ]);
+
+        $taste = new Taste;
+        $taste->name = request('taste');
+
+        $taste->save();
+
+        return redirect()->route('tastes.index');
     }
 
     /**
@@ -56,7 +69,8 @@ class TasteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $taste = Taste::find($id);
+        return view('backend.tastes.edit',compact('taste'));
     }
 
     /**
@@ -68,7 +82,18 @@ class TasteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "taste" => 'required|min:4:max:191'
+
+
+        ]);
+
+        $taste = Taste::find($id);
+        $taste->name = request('taste');
+
+        $taste->save();
+
+        return redirect()->route('tastes.index');
     }
 
     /**
@@ -79,6 +104,8 @@ class TasteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $taste = Taste::find($id);
+        $taste->delete();
+        return redirect()->route('tastes.index');
     }
 }

@@ -16,7 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard', 'BackendController@dashboard');
+
 Route::resource('categories','CategoryController');
+
+Route::resource('tables','TableController');
+
+Route::resource('tastes','TasteController');
+Route::resource('sizes','SizeController');
 
 
 Auth::routes();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Table;
 
 class TableController extends Controller
 {
@@ -13,7 +14,8 @@ class TableController extends Controller
      */
     public function index()
     {
-        //
+        $tables = Table::all();
+        return view('backend.tables.index',compact('tables'));
     }
 
     /**
@@ -23,7 +25,7 @@ class TableController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.tables.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class TableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "table"=>'required|min:4|max:191'
+
+
+        ]);
+
+        $table = new Table;
+        $table->table_no = request('table');
+
+        $table->save();
+
+        return redirect()->route('tables.index');
     }
 
     /**
@@ -45,7 +58,7 @@ class TableController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +69,8 @@ class TableController extends Controller
      */
     public function edit($id)
     {
-        //
+        $table = Table::find($id);
+        return view('backend.tables.edit',compact('table'));
     }
 
     /**
@@ -68,7 +82,18 @@ class TableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "table"=>'required|min:4|max:191'
+
+
+        ]);
+
+        $table =Table::find($id);
+        $table->table_no = request('table');
+
+        $table->update();
+
+        return redirect()->route('tables.index');
     }
 
     /**
@@ -79,6 +104,8 @@ class TableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $table = Table::find($id);
+        $table->delete();
+        return redirect()->route('tables.index');
     }
 }

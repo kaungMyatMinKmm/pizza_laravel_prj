@@ -17,6 +17,7 @@ class CreateSizesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('photo');
+            $table->integer('price');
             $table->timestamps();
         });
     }
