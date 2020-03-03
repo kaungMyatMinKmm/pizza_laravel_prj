@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Taste;
+use App\Recipe;
 
 class TasteController extends Controller
 {
@@ -25,7 +26,8 @@ class TasteController extends Controller
      */
     public function create()
     {
-        return view('backend.tastes.create');
+        $recipes = Recipe::all();
+        return view('backend.tastes.create',compact('recipes'));
     }
 
     /**

@@ -1,5 +1,5 @@
-@extends ('backendtemplate');
-@section('content');
+@extends ('backendtemplate')
+@section('content')
 
 <div class="container-fluid">
 
@@ -87,14 +87,27 @@
 						</div>
 					</div>
 
-					<div class="col">
-							<label class="col-form-label">Select Recipes</label>
-							<select name="recipes[]" class="form-control recipes" multiple="multiple">
-								@foreach ($recipes as $row)
-								<option value="{{$row->id}}" >{{$row->namee}}</option>
+					<div class="form-group row">
+						<label for="size" class="col-sm-2 col-form-label">Choose Size</label>
+						<div class="col-sm-10">
+							<select name="size" class="form-control">
+								@foreach ($sizes as $row)
+								<option value="{{$row->id}}">{{$row->name}}</option>
 								@endforeach
 							</select>
 						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Select Recipes</label>
+							<div class="col-sm-10">
+								<select name="recipes[]" class="form-control recipes" multiple="multiple">
+									@foreach ($recipes as $row)
+									<option value="{{$row->id}}" >{{$row->name}}</option>
+									@endforeach
+								</select>
+							</div>
+					</div>
 					
 
 
@@ -113,5 +126,17 @@
 		</div>
 
 	</div>
+
+
+		@section('script')
+			<script type="text/javascript">
+				$(document).ready(function () {
+
+					$('.recipes').select2();
+
+				})
+			</script>
+
+		@endsection
 
 @endsection

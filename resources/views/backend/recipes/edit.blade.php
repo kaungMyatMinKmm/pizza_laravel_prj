@@ -67,6 +67,19 @@
 				    	</div>
 					</div>
 
+					<div class="form-group row">
+						<label for="inputTaste" class="col-sm-2 col-form-label">Select Taste </label>
+				    	
+				    	<div class="col-sm-10">
+				      		<input type="text" class="form-control @error('taste') is-invalid @enderror" id="inputTaste" placeholder="Enter Recipe Taste" name="taste" value="{{$recipes->taste}}" required="" autocomplete="taste" autofocus>
+				      		@error('taste')
+				      		<span class="invalid-feedback" role="alert">
+				      			<strong>{{$message}}</strong>
+				      		</span> 
+				      		@enderror
+				    	</div>
+					</div>
+
 					
 					
 					<div class="form-group row">

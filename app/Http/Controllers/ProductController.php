@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Recipe; 
+use App\Size; 
 
 class ProductController extends Controller
 {
@@ -30,8 +31,9 @@ class ProductController extends Controller
     {
         //
         $recipes = Recipe::all();
+        $sizes = Size::all();
         $categories = Category::all();
-        return view ('backend.products.create',compact('categories','recipes'));
+        return view ('backend.products.create',compact('categories','recipes','sizes'));
 
     }
 
@@ -68,6 +70,7 @@ class ProductController extends Controller
         $product->code_no = request('codeno');
         $product->photo = $path;
         $product->category_id= request('category');
+        $product->size_id= request('size');
         $product->save();
 
         // Add product_recipe
@@ -117,7 +120,10 @@ class ProductController extends Controller
             "name"=>"required|min:3|max:191",
             "price"=>"required|min:4|max:6",
             "codeno"=>"required",
-            "photo"=>"required|mimes:jpeg,jpg,png"
+            
+            "photo"=>"required|mimes:jpeg,jpg,png",
+            "category"=>"required",
+            "size"=>"required",
             
         ]);
 
@@ -136,6 +142,7 @@ class ProductController extends Controller
         $product->code_no = request('codeno');
         $product->photo = $path;
         $product->category_id= request('category');
+        $product->size_id= request('size');
         $product->save();
 
 

@@ -18,4 +18,9 @@ class Recipe extends Model
     {
     	return $this->belongsToMany('App\Product')->withTimestamps();
     }
+
+    public function Taste($value='')
+    {
+    	return $this->belongsToMany('App\Taste')->withTimestamps();
+    }
 }

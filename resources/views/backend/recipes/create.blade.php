@@ -51,6 +51,17 @@
 					</div>
 
 					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Select Taste</label>
+							<div class="col-sm-10">
+								<select name="tastes[]" class="form-control tastes" multiple="multiple">
+									@foreach ($tastes as $row)
+									<option value="{{$row->id}}" >{{$row->name}}</option>
+									@endforeach
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group row">
 						<label for="inputQty" class="col-sm-2 col-form-label">Qty</label>
 
 						<div class="col-sm-10">
@@ -83,5 +94,16 @@
 		</div>
 
 	</div>
+
+	@section('script')
+			<script type="text/javascript">
+				$(document).ready(function () {
+
+					$('.tastes').select2();
+
+				})
+			</script>
+
+	@endsection
 
 @endsection
