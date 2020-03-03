@@ -114,4 +114,11 @@
 
 	</div>
 
+	@section('script')
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.recipes').select2();
+			})
+		</script>
+	@endsection
 @endsection

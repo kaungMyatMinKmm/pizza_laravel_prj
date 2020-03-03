@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\Size;
+use App\Taste;
 
 class RecipeController extends Controller
 {
@@ -29,8 +30,9 @@ class RecipeController extends Controller
     {
         //
         $recipes = Recipe::all();
+        $tastes = Taste::all();
         $sizes = Size::all();
-        return view ('backend.recipes.create',compact('recipes','sizes'));
+        return view ('backend.recipes.create',compact('recipes','sizes','tastes'));
     }
 
     /**
@@ -54,7 +56,7 @@ class RecipeController extends Controller
         $recipe->price = request ('price');
         $recipe->qty = request('qty');
         $recipe->save();
-
+        $recipe->Taste()->attach(request('tastes'));
         return redirect()->route('recipes.index');
     }
 

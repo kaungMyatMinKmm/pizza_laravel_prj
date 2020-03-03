@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-<<<<<<< HEAD
-// use Illuminate\Support\Facades\URL;
-=======
 use App\Recipe; 
->>>>>>> 5df313aad9d9e3a391c55515862f74d8f8e71b61
+use App\Size;
 
 class ProductController extends Controller
 {
