@@ -25,22 +25,13 @@
 	        	
 	            <form action="{{route('orders.store')}}" method="POST" enctype="multipart/form-data">
 	            	@csrf
-	            	<div class="form-group row">
-						<label for="recipe" class="col-sm-2 col-form-label">Choose Recipe</label>
-						<div class="col-sm-10">
-							<select name="recipe" class="form-control">
-								@foreach ($recipes as $row)
-								<option value="{{$row->id}}">{{$row->name}}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
+	            	
 					<div class="form-group row">
 						<label for="table" class="col-sm-2 col-form-label">Choose Table</label>
 						<div class="col-sm-10">
 							<select name="table" class="form-control">
 								@foreach ($tables as $row)
-								<option value="{{$row->id}}">{{$row->name}}</option>
+								<option value="{{$row->id}}">{{$row->table_no}}</option>
 								@endforeach
 							</select>
 						</div>
@@ -69,6 +60,7 @@
 				      		@enderror
 				    	</div>
 					</div>
+					
 					
 					
 

@@ -18,8 +18,15 @@ class ProductRecipe extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('recipe_id');
-            
             $table->timestamps();
+
+            $table->foreign('product_id')
+                    ->references('id')->on('products')
+                    ->onDelete('cascade');
+
+                     $table->foreign('recipe_id')
+                    ->references('id')->on('recipes')
+                    ->onDelete('cascade');
         });
     }
 

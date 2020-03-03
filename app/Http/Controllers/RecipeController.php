@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Recipe;
+use App\Size;
 
 class RecipeController extends Controller
 {
@@ -14,6 +16,8 @@ class RecipeController extends Controller
     public function index()
     {
         //
+        $recipes = Recipe::all();
+        return view ('backend.recipes.index',compact ('recipes'));
     }
 
     /**
@@ -24,6 +28,9 @@ class RecipeController extends Controller
     public function create()
     {
         //
+        $recipes = Recipe::all();
+        $sizes = Size::all();
+        return view ('backend.recipes.create',compact('recipes','sizes'));
     }
 
     /**
@@ -35,6 +42,20 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            "name" =>"required|min:3,max:191",
+            "price" => "required|min:3,max:6",
+            "qty" => "required|min:1,max10"
+        ]);
+
+        $recipe = New Recipe;
+
+        $recipe->name= request('name');
+        $recipe->price = request ('price');
+        $recipe->qty = request('qty');
+        $recipe->save();
+
+        return redirect()->route('recipes.index');
     }
 
     /**
@@ -57,6 +78,9 @@ class RecipeController extends Controller
     public function edit($id)
     {
         //
+        $recipes = Recipe::find($id);
+
+        return view('backend.recipes.edit',compact('recipes'));
     }
 
     /**
@@ -69,6 +93,20 @@ class RecipeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            "name" =>"required|min:3,max:191",
+            "price" => "required|min:3,max:6",
+            "qty" => "required|min:1,max10"
+        ]);
+
+        $recipe =  Recipe::find($id);
+
+        $recipe->name= request('name');
+        $recipe->price = request ('price');
+        $recipe->qty = request('qty');
+        $recipe->save();
+
+        return redirect()->route('recipes.index');
     }
 
     /**
@@ -80,5 +118,10 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
+
+        $recipe= Recipe::find($id);
+        $recipe->delete();
+
+        return redirect()->route('recipes.index');
     }
 }

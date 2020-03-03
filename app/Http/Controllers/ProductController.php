@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+<<<<<<< HEAD
 // use Illuminate\Support\Facades\URL;
+=======
+use App\Recipe; 
+>>>>>>> 5df313aad9d9e3a391c55515862f74d8f8e71b61
 
 class ProductController extends Controller
 {
@@ -29,9 +33,9 @@ class ProductController extends Controller
     public function create()
     {
         //
-
+        $recipes = Recipe::all();
         $categories = Category::all();
-        return view ('backend.products.create',compact('categories'));
+        return view ('backend.products.create',compact('categories','recipes'));
 
     }
 
@@ -47,8 +51,9 @@ class ProductController extends Controller
         $request->validate([
             "name"=>"required|min:3|max:191",
             "price"=>"required|min:4|max:6",
-            "codeno"=>"required",
+            "codeno"=>"required",   
             "photo"=>"required|mimes:jpeg,jpg,png",
+            "category"=>"required"
             
         ]);
 
@@ -68,6 +73,9 @@ class ProductController extends Controller
         $product->photo = $path;
         $product->category_id= request('category');
         $product->save();
+
+        // Add product_recipe
+        $product->Recipe()->attach(request('recipes'));
 
 
         return redirect()->route('products.index');
