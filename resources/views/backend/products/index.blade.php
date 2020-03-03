@@ -46,7 +46,7 @@
 								<td>{{$row->price}}</td>
 								
 								<td>
-								
+									<a href="#" class="btn btn-info detail" data-id="{{$row->id}}">Detail</a>
 									<a href="{{route('products.edit',$row->id)}}" class="btn btn-warning">Edit</a>
 									<form method="post" action="{{route('products.destroy',$row->id)}}" onsubmit="return confirm('Are You Sure?')" class="d-inline-flex">
 										@csrf
@@ -69,4 +69,42 @@
 		</div>
 
 	</div>
+	<!-- Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailModalLabel">Product Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="detailBody">
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+@endsection
+
+@section('script')
+<script type="text/javascript">
+	$(document).ready(function(){
+
+
+		$('.detail').click(function(){
+			var id = $(this).data('id');
+			// alert(id);
+			$.get("products/"+id,function(res){
+
+				// $('#detailModalLabel').text(res.namee);
+				$('#detailBody').html(
+					res.category_id+"</td><br><td>Code_no:"+res.code_no+"</td><br>"+res.product_name+"<br>"+res.price);
+				$('#detailModal').modal('show');
+			})
+		})
+	})
+</script>
 @endsection

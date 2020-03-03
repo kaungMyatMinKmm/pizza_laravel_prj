@@ -200,7 +200,7 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sb_admin/js/demo/chart-area-demo.js')}}"></script>
   <script src="{{ asset('sb_admin/js/demo/chart-pie-demo.js')}}"></script>
-@yield('script')
+ @yield('script')
 </body>
 
 </html>

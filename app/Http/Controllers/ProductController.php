@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+// use Illuminate\Support\Facades\URL;
 
 class ProductController extends Controller
 {
@@ -80,7 +81,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return response()->json($product);
     }
 
     /**
