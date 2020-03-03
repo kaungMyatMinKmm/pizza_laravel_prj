@@ -12,4 +12,9 @@ class Product extends Model
    {
    	 return $this->belongsTo('App\Category');
    }
+
+   public function Recipe($value='')
+   {
+   	return $this->belongsToMany('App\Recipe')->withTimestamps();
+   }
 }

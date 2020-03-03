@@ -24,6 +24,7 @@ Route::resource('tables','TableController');
 
 Route::resource('tastes','TasteController');
 Route::resource('sizes','SizeController');
+Route::resource('recipes','RecipeController');
 
 
 Auth::routes();

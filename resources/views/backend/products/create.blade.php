@@ -86,6 +86,15 @@
 							</select>
 						</div>
 					</div>
+
+					<div class="col">
+							<label class="col-form-label">Select Recipes</label>
+							<select name="recipes[]" class="form-control recipes" multiple="multiple">
+								@foreach ($recipes as $row)
+								<option value="{{$row->id}}" >{{$row->namee}}</option>
+								@endforeach
+							</select>
+						</div>
 					
 
 
