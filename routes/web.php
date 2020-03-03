@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('dashboard', 'BackendController@dashboard');
 
 Route::resource('categories','CategoryController');
