@@ -1,5 +1,5 @@
-@extends ('backendtemplate');
-@section('content');
+@extends ('backendtemplate')
+@section('content')
 
 <div class="container-fluid">
 
@@ -42,7 +42,7 @@
 
 						<div class="col-sm-10">
 							<input type="text" name="price" class="form-control @error('price')is-invalid @enderror" id="inputPrice" placeholder="Enter Price" required="required">
-							@error('name')
+							@error('price')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
 							</span>
@@ -55,7 +55,7 @@
 
 						<div class="col-sm-10">
 							<input type="text" name="codeno" class="form-control @error('codeno')is-invalid @enderror" id="inputCodeno" placeholder="Enter codeno" required="required">
-							@error('name')
+							@error('codeno')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
 							</span>
@@ -69,7 +69,7 @@
 						<div class="col-sm-3">
 							<input type="file" name="photo" class="form-control @error('photo')is-invalid @enderror" id="inputPhoto" required="required">
 						</div>
-						@error('name')
+						@error('photo')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
 							</span>
@@ -87,16 +87,16 @@
 						</div>
 					</div>
 
-					<div class="col">
-							<label class="col-form-label">Select Recipes</label>
-							<select name="recipes[]" class="form-control recipes" multiple="multiple">
-								@foreach ($recipes as $row)
-								<option value="{{$row->id}}" >{{$row->namee}}</option>
+					<div class="form-group row">
+						<label for="size" class="col-sm-2 col-form-label">Choose Size</label>
+						<div class="col-sm-10">
+							<select name="size" class="form-control">
+								@foreach ($sizes as $row)
+								<option value="{{$row->id}}">{{$row->name}}</option>
 								@endforeach
 							</select>
 						</div>
-					
-
+					</div>
 
 					<div class="form-group row">
 						<div class="col-sm-2"></div>
@@ -114,11 +114,16 @@
 
 	</div>
 
-	@section('script')
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('.recipes').select2();
-			})
-		</script>
-	@endsection
+
+
+		@section('script')
+			<script type="text/javascript">
+				$(document).ready(function () {
+
+					$('.recipes').select2();
+
+				})
+			</script>
+
+		@endsection
 @endsection

@@ -36,6 +36,18 @@
 				      		@enderror
 				    	</div>
 					</div>
+					<div class="form-group row">
+						<label for="inputPhoto" class="col-sm-2 col-form-label"> Photo </label>
+				    	
+				    	<div class="col-sm-10">
+				      		<input type="file" class="form-control-file @error('photo') is-invalid @enderror" id="inputPhoto"  name="photo" value="{{old('photo')}}" required="" autocomplete="photo" autofocus>
+				      		@error('photo')
+				      		<span class="invalid-feedback" role="alert">
+				      			<strong>{{$message}}</strong>
+				      		</span> 
+				      		@enderror
+				    	</div>
+					</div>
 					
 
 

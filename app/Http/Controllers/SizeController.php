@@ -101,7 +101,7 @@ class SizeController extends Controller
     {
         $request->validate([
             "name" => 'required|min:5|max:191',
-            "photo" => 'required|mimes:jpeg,jpg,png',
+            "oldphoto" => 'required',
             "price" => 'required'
 
 
@@ -115,6 +115,8 @@ class SizeController extends Controller
             $name = time().'.'.$photo->getClientOriginalExtension();
             $photo->move($upload_dir,$name);
             $path = '/storage/pizza_img/'.$name;
+        }else{
+            $path = request('oldphoto');
         }
 
         //Store Data (4)
@@ -124,7 +126,7 @@ class SizeController extends Controller
         $size->price = request('price') ;
         
 
-        $size->update();
+        $size->save();
 
         // return redirect (5)
         return redirect()->route('sizes.index');

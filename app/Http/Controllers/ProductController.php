@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-use App\Recipe; 
 use App\Size;
+
 
 class ProductController extends Controller
 {
@@ -30,9 +30,9 @@ class ProductController extends Controller
     public function create()
     {
         //
-        $recipes = Recipe::all();
+        $sizes = Size::all();
         $categories = Category::all();
-        return view ('backend.products.create',compact('categories','recipes'));
+        return view ('backend.products.create',compact('categories','sizes'));
 
     }
 
@@ -50,7 +50,8 @@ class ProductController extends Controller
             "price"=>"required|min:4|max:6",
             "codeno"=>"required",   
             "photo"=>"required|mimes:jpeg,jpg,png",
-            "category"=>"required"
+            "category"=>"required",
+            "size"=>"required"
             
         ]);
 
@@ -69,6 +70,7 @@ class ProductController extends Controller
         $product->code_no = request('codeno');
         $product->photo = $path;
         $product->category_id= request('category');
+        $product->size_id= request('size');
         $product->save();
 
         // Add product_recipe
@@ -99,10 +101,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-
         $products= Product::find($id);
+        $sizes = Size::all();
         $categories= Category::all();
-        return view('backend.products.edit',compact('products','categories'));
+        return view('backend.products.edit',compact('sizes','products','categories'));
     }
 
     /**
@@ -119,7 +121,10 @@ class ProductController extends Controller
             "name"=>"required|min:3|max:191",
             "price"=>"required|min:4|max:6",
             "codeno"=>"required",
-            "photo"=>"required|mimes:jpeg,jpg,png"
+            
+            "oldphoto"=>"required",
+            "category"=>"required",
+            "size"=>"required",
             
         ]);
 
@@ -129,15 +134,19 @@ class ProductController extends Controller
             $name=time().'.'.$photo->getClientOriginalExtension();
             $photo->move($uploadDir,$name);
             $path='/storage/product/'.$name;
+        }else{
+            $path = request('oldphoto');
         }
 
         $product = Product::find($id);
 
-        $product->product_name = request ('name');
+        $product->product_name = request('name');
         $product->price = request('price');
         $product->code_no = request('codeno');
         $product->photo = $path;
         $product->category_id= request('category');
+        $product->size_id= request('size');
+
         $product->save();
 
 

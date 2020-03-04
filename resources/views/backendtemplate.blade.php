@@ -19,6 +19,9 @@
   <link href="{{ asset('sb_admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
   <link href="{{asset('select2/css/select2.min.css')}}" rel="stylesheet"/>
 
+  <link href="{{ asset('select2/css/select2.min.css')}}" rel="stylesheet" />
+
+
 </head>
 
 <body id="page-top">
@@ -30,18 +33,19 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-5" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15 mt-5">
+          <i class="fas fa-pizza-slice px-3"></i>
+          <h5><i>Offline POS</i></h5>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <!-- <div class="sidebar-brand-text mx-3">Offline POS</div> -->
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item active text-dark">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -58,17 +62,22 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <i class="fas fa-fw fa-cog">Pages</i>
+          <span></span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <h6 class="collapse-header"> Pages:</h6>
+            <a class="collapse-item" href="{{route('categories.index')}}">Category</a>
+            <a class="collapse-item" href="{{route('products.index')}}">Product</a>
+            <a class="collapse-item" href="{{route('tastes.index')}}">Taste</a>
+            <a class="collapse-item" href="{{route('tables.index')}}">Table</a>
+            <a class="collapse-item" href="{{route('recipes.index')}}">Recipe</a>
+            <a class="collapse-item" href="{{route('sizes.index')}}">Size</a>
           </div>
         </div>
       </li>
+      
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -203,6 +212,7 @@
   <script src="{{ asset('sb_admin/js/demo/chart-pie-demo.js')}}"></script>
   <script src="{{asset('select2/js/select2.min.js')}}"></script>
  @yield('script')
+
 </body>
 
 </html>

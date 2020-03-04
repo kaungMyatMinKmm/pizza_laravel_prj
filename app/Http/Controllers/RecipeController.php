@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipe;
-use App\Size;
-use App\Taste;
+
 
 class RecipeController extends Controller
 {
@@ -29,10 +28,8 @@ class RecipeController extends Controller
     public function create()
     {
         //
-        $recipes = Recipe::all();
-        $tastes = Taste::all();
-        $sizes = Size::all();
-        return view ('backend.recipes.create',compact('recipes','sizes','tastes'));
+        return view ('backend.recipes.create');
+
     }
 
     /**
@@ -45,18 +42,17 @@ class RecipeController extends Controller
     {
         //
         $request->validate([
-            "name" =>"required|min:3,max:191",
-            "price" => "required|min:3,max:6",
-            "qty" => "required|min:1,max10"
+            "name" =>"required|min:3,max:191"
+           
         ]);
 
         $recipe = New Recipe;
 
         $recipe->name= request('name');
-        $recipe->price = request ('price');
-        $recipe->qty = request('qty');
+       
         $recipe->save();
         $recipe->Taste()->attach(request('tastes'));
+
         return redirect()->route('recipes.index');
     }
 
@@ -96,17 +92,16 @@ class RecipeController extends Controller
     {
         //
         $request->validate([
-            "name" =>"required|min:3,max:191",
-            "price" => "required|min:3,max:6",
-            "qty" => "required|min:1,max10"
+            "name" =>"required|min:3,max:191"
+           
         ]);
 
-        $recipe =  Recipe::find($id);
+        $recipe = New Recipe;
 
         $recipe->name= request('name');
-        $recipe->price = request ('price');
-        $recipe->qty = request('qty');
+       
         $recipe->save();
+        $recipe->Taste()->attach(request('tastes'));
 
         return redirect()->route('recipes.index');
     }

@@ -101,7 +101,7 @@
 
 				// $('#detailModalLabel').text(res.namee);
 				$('#detailBody').html(
-					res.category_id+"</td><br><td>Code_no:"+res.code_no+"</td><br>"+res.product_name+"<br>"+res.price);
+					"</td><br><td>Code_no:"+res.code_no+"</td><br>"+res.product_name+"<br>"+res.price);
 				$('#detailModal').modal('show');
 			})
 		})

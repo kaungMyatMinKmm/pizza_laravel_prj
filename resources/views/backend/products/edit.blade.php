@@ -43,7 +43,7 @@
 						<label for="inputCodeno" class="col-sm-2 col-form-label">Code No</label>
 
 						<div class="col-sm-10">
-							<input type="text" name="codeno" class="form-control @error('codeno')is-invalid @enderror" id="inputCodeno" placeholder="Enter codeno" required="required" value="{{$products->codeno}}">
+							<input type="text" name="codeno" class="form-control @error('codeno')is-invalid @enderror" id="inputCodeno" placeholder="Enter codeno" required="required" value="{{$products->code_no}}">
 							@error('name')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
@@ -105,12 +105,22 @@
 							</select>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label for="category" class="col-sm-2 col-form-label">Choose Size</label>
+						<div class="col-sm-10">
+							<select name="size" class="form-control">
+							@foreach ($sizes as $row)
+							<option value="{{$row->id}}" @if ($products->size_id == $row->id) {{'selected'}} @endif>{{$row->name}}</option>
+							@endforeach
+							</select>
+						</div>
+					</div>
 
 					<div class="form-group row">
 						<div class="col-sm-2"></div>
 					    <div class="col-sm-10">
 					      <button type="submit" class="btn btn-primary">
-					      	<i class="fa fa-save"></i> Save
+					      	<i class="fa fa-save"></i> Update
 					      </button>
 					    </div>
 					</div>
