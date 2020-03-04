@@ -42,7 +42,7 @@
 
 						<div class="col-sm-10">
 							<input type="text" name="price" class="form-control @error('price')is-invalid @enderror" id="inputPrice" placeholder="Enter Price" required="required">
-							@error('name')
+							@error('price')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
 							</span>
@@ -55,7 +55,7 @@
 
 						<div class="col-sm-10">
 							<input type="text" name="codeno" class="form-control @error('codeno')is-invalid @enderror" id="inputCodeno" placeholder="Enter codeno" required="required">
-							@error('name')
+							@error('codeno')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
 							</span>
@@ -69,7 +69,7 @@
 						<div class="col-sm-3">
 							<input type="file" name="photo" class="form-control @error('photo')is-invalid @enderror" id="inputPhoto" required="required">
 						</div>
-						@error('name')
+						@error('photo')
 							<span class="invalid-feedback" role="alert" >
 								<strong>{{$message}}</strong>
 							</span>
@@ -99,19 +99,6 @@
 					</div>
 
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Select Recipes</label>
-							<div class="col-sm-10">
-								<select name="recipes[]" class="form-control recipes" multiple="multiple">
-									@foreach ($recipes as $row)
-									<option value="{{$row->id}}" >{{$row->name}}</option>
-									@endforeach
-								</select>
-							</div>
-					</div>
-					
-
-
-					<div class="form-group row">
 						<div class="col-sm-2"></div>
 					    <div class="col-sm-10">
 					      <button type="submit" class="btn btn-primary">
@@ -128,6 +115,7 @@
 	</div>
 
 
+
 		@section('script')
 			<script type="text/javascript">
 				$(document).ready(function () {
@@ -138,5 +126,4 @@
 			</script>
 
 		@endsection
-
 @endsection

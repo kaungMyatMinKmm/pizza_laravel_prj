@@ -40,53 +40,12 @@
 					</div>
 
 					
-
-					<div class="form-group row">
-						<label for="inputPrice" class="col-sm-2 col-form-label"> price </label>
-				    	
-				    	<div class="col-sm-10">
-				      		<input type="text" class="form-control @error('price') is-invalid @enderror" id="inputPrice" placeholder="Enter Recipe price" name="price" value="{{$recipes->price}}" required="" autocomplete="price" autofocus>
-				      		@error('price')
-				      		<span class="invalid-feedback" role="alert">
-				      			<strong>{{$message}}</strong>
-				      		</span> 
-				      		@enderror
-				    	</div>
-					</div>
-
-					<div class="form-group row">
-						<label for="inputQty" class="col-sm-2 col-form-label"> Qty </label>
-				    	
-				    	<div class="col-sm-10">
-				      		<input type="text" class="form-control @error('qty') is-invalid @enderror" id="inputQty" placeholder="Enter Recipe qty" name="qty" value="{{$recipes->qty}}" required="" autocomplete="qty" autofocus>
-				      		@error('qty')
-				      		<span class="invalid-feedback" role="alert">
-				      			<strong>{{$message}}</strong>
-				      		</span> 
-				      		@enderror
-				    	</div>
-					</div>
-
-					<div class="form-group row">
-						<label for="inputTaste" class="col-sm-2 col-form-label">Select Taste </label>
-				    	
-				    	<div class="col-sm-10">
-				      		<input type="text" class="form-control @error('taste') is-invalid @enderror" id="inputTaste" placeholder="Enter Recipe Taste" name="taste" value="{{$recipes->taste}}" required="" autocomplete="taste" autofocus>
-				      		@error('taste')
-				      		<span class="invalid-feedback" role="alert">
-				      			<strong>{{$message}}</strong>
-				      		</span> 
-				      		@enderror
-				    	</div>
-					</div>
-
-					
 					
 					<div class="form-group row">
 						<div class="col-sm-2"></div>
 					    <div class="col-sm-10">
 					      <button type="submit" class="btn btn-primary">
-					      	<i class="fa fa-save"></i> Save
+					      	<i class="fa fa-save"></i> Update
 					      </button>
 					    </div>
 					</div>

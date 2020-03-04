@@ -35,7 +35,8 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th> Name </th>
+								<th>Name</th>
+								<th>Photo</th>
 								<th>Action</th>
 								
 							</tr>
@@ -47,6 +48,7 @@
 							<tr>
 								<td>{{$i++}}</td>
 								<td>{{$row->name}}</td>
+								<td> <img src="{{$row->photo}}" class="card-img-top img-fluid w-25"></td>
 								
 								<td>
 									
@@ -55,7 +57,7 @@
 										@csrf
 										@method('DELETE')
 
-									<button type="submit" class="btn btn-danger"> Delete
+									<button type="submit" class="btn btn-danger d-inline-flex"> Delete
 									</button>	
 									</form>
 								</td>

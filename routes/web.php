@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::group([
 
-Route::get('dashboard', 'BackendController@dashboard');
+'middleware' => 'auth',
+'prefix' => 'backend',
+
+
+],function(){
+
 
 Route::resource('categories','CategoryController');
 Route::resource('products','ProductController');
@@ -25,6 +31,14 @@ Route::resource('tables','TableController');
 Route::resource('tastes','TasteController');
 Route::resource('sizes','SizeController');
 Route::resource('recipes','RecipeController');
+
+
+});
+
+Route::get('dashboard', 'BackendController@dashboard');
+
+
+// Route::resource('orders','OrderController');
 
 
 Auth::routes();

@@ -38,48 +38,6 @@
 					</div>
 
 					<div class="form-group row">
-						<label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
-
-						<div class="col-sm-10">
-							<input type="text" name="price" class="form-control @error('price')is-invalid @enderror" id="inputPrice" placeholder="Enter Price" required="required">
-							@error('name')
-							<span class="invalid-feedback" role="alert" >
-								<strong>{{$message}}</strong>
-							</span>
-							@enderror
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Select Taste</label>
-							<div class="col-sm-10">
-								<select name="tastes[]" class="form-control tastes" multiple="multiple">
-									@foreach ($tastes as $row)
-									<option value="{{$row->id}}" >{{$row->name}}</option>
-									@endforeach
-								</select>
-							</div>
-					</div>
-
-					<div class="form-group row">
-						<label for="inputQty" class="col-sm-2 col-form-label">Qty</label>
-
-						<div class="col-sm-10">
-							<input type="text" name="qty" class="form-control @error('qty')is-invalid @enderror" id="inputQty" placeholder="Enter qty" required="required">
-							@error('name')
-							<span class="invalid-feedback" role="alert" >
-								<strong>{{$message}}</strong>
-							</span>
-							@enderror
-						</div>
-					</div>
-
-					
-					
-					
-
-
-					<div class="form-group row">
 						<div class="col-sm-2"></div>
 					    <div class="col-sm-10">
 					      <button type="submit" class="btn btn-primary">
@@ -94,16 +52,5 @@
 		</div>
 
 	</div>
-
-	@section('script')
-			<script type="text/javascript">
-				$(document).ready(function () {
-
-					$('.tastes').select2();
-
-				})
-			</script>
-
-	@endsection
 
 @endsection

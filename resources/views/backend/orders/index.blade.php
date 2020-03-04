@@ -1,4 +1,4 @@
-	@extends ('backendtemplate');
+@extends ('backendtemplate');
 @section('content');
 
 
@@ -8,12 +8,12 @@
 	            <div class="row">
 					<div class="col-10">
 						<h4 class="m-0 font-weight-bold text-primary"> 
-			            	Products list
+			            	Orders list
 			            </h4>
 					</div>
 
 					<div class="col-2">
-						<a href="{{route('products.create')}}" class="btn btn-outline-primary btn-block float-right"> 
+						<a href="{{route('orders.create')}}" class="btn btn-outline-primary btn-block float-right"> 
 		            		<i class="fa fa-plus pr-2"></i>	Add New 
 		            	</a>
 					</div>
@@ -28,9 +28,10 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Code No</th>
-								<th> Name </th>
-								<th> Price </th>
+								<th>Table</th>
+								<th>OrderNo</th>
+								<th>OrderDate</th>
+								<th>Total</th>
 								<th>Action</th>
 								
 							</tr>
@@ -38,12 +39,13 @@
 
 						<tbody>
 							@php $i=1; @endphp
-							@foreach($products as $row)
+							@foreach($orders as $row)
 							<tr>
 								<td>{{$i++}}</td>
-								<td>{{$row->code_no}}</td>
-								<td>{{$row->product_name}}</td>
-								<td>{{$row->price}}</td>
+								<td>{{$row->table->table_no}}</td>
+								<td>{{$row->order}}</td>
+								<td>{{$row->orderdate}}</td>
+								
 								
 								<td>
 									<a href="#" class="btn btn-info detail" data-id="{{$row->id}}">Detail</a>
@@ -101,7 +103,7 @@
 
 				// $('#detailModalLabel').text(res.namee);
 				$('#detailBody').html(
-					"</td><br><td>Code_no:"+res.code_no+"</td><br>"+res.product_name+"<br>"+res.price);
+					res.category_id+"</td><br><td>Code_no:"+res.code_no+"</td><br>"+res.product_name+"<br>"+res.price);
 				$('#detailModal').modal('show');
 			})
 		})

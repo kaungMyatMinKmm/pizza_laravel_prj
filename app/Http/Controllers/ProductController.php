@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
-use App\Recipe; 
-use App\Size; 
+use App\Size;
+
 
 class ProductController extends Controller
 {
@@ -30,10 +30,9 @@ class ProductController extends Controller
     public function create()
     {
         //
-        $recipes = Recipe::all();
         $sizes = Size::all();
         $categories = Category::all();
-        return view ('backend.products.create',compact('categories','recipes','sizes'));
+        return view ('backend.products.create',compact('categories','sizes'));
 
     }
 
@@ -89,7 +88,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return response()->json($product);
     }
 
     /**
@@ -101,12 +101,13 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-
         $products= Product::find($id);
+        $sizes = Size::all();
         $categories= Category::all();
+
         $sizes= Size::all();
         return view('backend.products.edit',compact('products','categories','sizes'));
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -123,7 +124,7 @@ class ProductController extends Controller
             "price"=>"required|min:4|max:6",
             "codeno"=>"required",
             
-            "photo"=>"required|mimes:jpeg,jpg,png",
+            "oldphoto"=>"required",
             "category"=>"required",
             "size"=>"required",
             
@@ -135,18 +136,20 @@ class ProductController extends Controller
             $name=time().'.'.$photo->getClientOriginalExtension();
             $photo->move($uploadDir,$name);
             $path='/storage/product/'.$name;
+        }else{
+            $path = request('oldphoto');
         }
 
         $product = Product::find($id);
 
-        $product->product_name = request ('name');
+        $product->product_name = request('name');
         $product->price = request('price');
         $product->code_no = request('codeno');
         $product->photo = $path;
         $product->category_id= request('category');
         $product->size_id= request('size');
-        $product->update();
 
+        $product->save();
 
          return redirect()->route('products.index');
     }

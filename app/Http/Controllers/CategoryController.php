@@ -40,15 +40,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        "name" => 'required|min:4|max:191'
-
+        "name" => 'required|min:4|max:191',
+        "photo"=>'required|mimes:jpeg,jpg,png'
 
 
         ]);
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $uploadDir = public_path().'/storage/pizza_img/';
+            $name=time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($uploadDir,$name);
+            $path='/storage/pizza_img/'.$name;
+        }
 
         $category = new Category;
         $category->name = request('name');
-
+        $category->photo= $path;
         $category->save();
 
         return redirect()->route('categories.index');
@@ -87,15 +94,25 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-        "name" => 'required|min:4|max:191'
+        "name" => 'required|min:4|max:191',
+        "photo" => 'sometimes|mimes:jpeg,jpg,png'
 
 
 
         ]);
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $uploadDir = public_path().'/storage/pizza_img/';
+            $name=time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($uploadDir,$name);
+            $path='/storage/pizza_img/'.$name;
+        }else{
+            $path = 'oldphoto';
+        }
 
         $category =Category::find($id);
         $category->name = request('name');
-
+        $category->photo = $path;
         $category->update();
 
         return redirect()->route('categories.index');

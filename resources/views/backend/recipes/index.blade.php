@@ -31,8 +31,6 @@
 							<tr>
 								<th>No</th>
 								<th> Name </th>
-								<th> Price </th>
-								<th> Qty </th>
 								<th>Action</th>
 								
 							</tr>
@@ -44,8 +42,7 @@
 							<tr>
 								<td>{{$i++}}</td>
 								<td>{{$row->name}}</td>
-								<td>{{$row->price}}</td>
-								<td>{{$row->qty}}</td>
+								
 								
 								<td>
 								

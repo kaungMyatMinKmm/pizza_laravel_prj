@@ -68,11 +68,11 @@
                 </div> 
         </div>
       </div>
-
   </div>
       <!-- End of Main Content -->
+</div>
 
- <div class="col-lg-4">  
+  <div class="col-lg-4">  
     <table>
       <thead>
         <tr>
@@ -89,10 +89,8 @@
       <tfoot id="total">
         
       </tfoot>
-  </table>
-
-</div>
-</div>
+    </table>
+  </div>
 </div>
 
 

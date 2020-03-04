@@ -38,6 +38,31 @@
 				      		@enderror
 				    	</div>
 					</div>
+					<div class="form-group row">
+						<label for="photo" class="col-sm-2 col-form-label"> photo  </label>
+					    <div class="col-sm-10">
+					    	<ul class="nav nav-tabs">
+					    		<li class="nav-item">
+					    			<a href="#old" class="nav-link active" data-toggle = "tab">Old</a>
+					    		</li>
+
+					    		<li class="nav-item">
+					    			<a href="#new" class="nav-link" data-toggle = "tab">New</a>
+					    		</li>
+					    	</ul>
+
+					    	<div class="tab-content py-3">
+					    		<div class="tab-pane fade show active" id="old">
+					    			<img src="{{asset($category->photo)}}" class="img-fluid w-25">
+					    			<input type="hidden" name="oldphoto" value="{{asset($category->photo)}}">
+					    		</div>
+
+					    		<div class="tab-pane fade show" id="new">
+					    			<input type="file" name="photo" class="form-control-file" id="photo">
+					    		</div>
+					    	</div>
+					    </div>
+					</div>
 					
 
 

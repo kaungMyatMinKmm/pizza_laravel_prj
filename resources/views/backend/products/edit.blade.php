@@ -105,6 +105,16 @@
 							</select>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label for="category" class="col-sm-2 col-form-label">Choose Size</label>
+						<div class="col-sm-10">
+							<select name="size" class="form-control">
+							@foreach ($sizes as $row)
+							<option value="{{$row->id}}" @if ($products->size_id == $row->id) {{'selected'}} @endif>{{$row->name}}</option>
+							@endforeach
+							</select>
+						</div>
+					</div>
 
 
 					<div class="form-group row">
@@ -122,7 +132,9 @@
 						<div class="col-sm-2"></div>
 					    <div class="col-sm-10">
 					      <button type="submit" class="btn btn-primary">
-					      	<i class="fa fa-save"></i> update
+
+					      	<i class="fa fa-save"></i> Update
+
 					      </button>
 					    </div>
 					</div>
