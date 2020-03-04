@@ -51,7 +51,8 @@ class ProductController extends Controller
             "price"=>"required|min:4|max:6",
             "codeno"=>"required",   
             "photo"=>"required|mimes:jpeg,jpg,png",
-            "category"=>"required"
+            "category"=>"required",
+            "size"=>"required"
             
         ]);
 
@@ -103,7 +104,8 @@ class ProductController extends Controller
 
         $products= Product::find($id);
         $categories= Category::all();
-        return view('backend.products.edit',compact('products','categories'));
+        $sizes= Size::all();
+        return view('backend.products.edit',compact('products','categories','sizes'));
     }
 
     /**
@@ -143,7 +145,7 @@ class ProductController extends Controller
         $product->photo = $path;
         $product->category_id= request('category');
         $product->size_id= request('size');
-        $product->save();
+        $product->update();
 
 
          return redirect()->route('products.index');

@@ -36,7 +36,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Pizza</div>
       </a>
 
       <!-- Divider -->
@@ -188,7 +188,9 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('sb_admin/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('sb_admin/vendor/jquery/jquery.min.js')}}"></script>  
+  <script src="{{ asset('sb_admin/js/custom.js')}}"></script>
+
   <script src="{{ asset('sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript-->

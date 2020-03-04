@@ -28,7 +28,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">{{$row->name}}</p>
-                            <input type="radio" name="category" value="{{$row->id}}">
+                            <input type="radio" name="category" value="{{$row->id}}" class="addtocart" data-id="{{$row->id}}" data-name="{{$row->name}}">
                           </div>
                         </div>
                       @endforeach  
@@ -43,7 +43,8 @@
                            <img src="{{$row->photo}}" class="card-img-top w-10" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">{{$row->name}}</h5>
-                            <input type="radio" name="category" value="{{$row->id}}">
+                            <p class="card-text">{{$row->price}}</p>
+                            <input type="radio" name="category" value="{{$row->id}}" class="addtocart" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
                           </div>
                         </div>
                        
@@ -58,7 +59,8 @@
                            <img src="{{$row->photo}}" class="card-img-top " style="width: 10; height: 10;" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">{{$row->product_name}}</h5>
-                            <input type="radio" name="category" value="{{$row->id}}">
+                             <p class="card-text">{{$row->price}}</p>
+                            <input type="checkbox" name="category" value="{{$row->id}}" class="addtocart" data-id="{{$row->id}}" data-name="{{$row->product_name}}" data-price="{{$row->price}}">
                           </div>
                         </div>
                        
@@ -68,9 +70,30 @@
       </div>
 
   </div>
-
-  </div>
-  </div> 
       <!-- End of Main Content -->
+
+ <div class="col-lg-4">  
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="order">
+        
+      </tbody>
+      <tfoot id="total">
+        
+      </tfoot>
+  </table>
+
+</div>
+</div>
+</div>
+
 
 @endsection
