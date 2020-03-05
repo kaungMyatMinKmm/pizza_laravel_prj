@@ -103,10 +103,9 @@ $(document).ready(function () {
             var myfoot="";
 
         myfoot += `<tr>
-                     <td colspan="8">
-                    <h3 class="text-right"> Total : ${total}Ks</h3></td>
-
-      </tr>
+                    <td colspan="5">
+                    <h5 class="text-right"> Total : ${total}Ks</h5></td>
+                  </tr>
 
 
       <tr>
