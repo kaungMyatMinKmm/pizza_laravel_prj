@@ -32,7 +32,7 @@
                             <div class="card-body rounded-circle text-dark" style="background-color: #B29882">
                               <h5 class="card-title">{{$row->table_no}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" class="select" name="table" value="{{$row->id}}">
+                              <input type="radio" name="table" value="{{$row->id}}">
                             </div>
                           </div>
                         @endforeach 
@@ -52,7 +52,7 @@
           
                               <h5 class="card-title">{{$row->name}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="category" class="select" value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}">
+                              <input type="radio" name="category" value="{{$row->id}}">
                             </div>
                           </div>
                         @endforeach 
@@ -68,7 +68,7 @@
                              <img src="{{$row->photo}}" class="card-img-top"style="width: 10; height: 10;">
                             <div class="card-body">
                               <h5 class="card-title">{{$row->name}}</h5>
-                              <input type="radio" name="size" class="select" value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
+                              <input type="radio" name="size" value="{{$row->id}}">
                             </div>
                           </div>
                          
@@ -83,7 +83,7 @@
                          <img src="{{$row->photo}}" class="card-img-top " style="width: 10; height: 10;" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">{{$row->product_name}}</h5>
-                          <input type="checkbox" class="select" value="{{$row->id}}" name="{{$row->product_name}}" data-price="{{$row->price}}">
+                          <input type="checkbox" name="product" value="{{$row->id}}">
                         </div>
                       </div>
                      
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-          <div class="col-lg-4 table-responsive">
+      <div class="col-lg-4 table-responsive">
             <table class="table">
                   <thead>
                     <tr>
