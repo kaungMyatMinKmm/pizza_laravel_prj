@@ -104,8 +104,10 @@ class ProductController extends Controller
         $products= Product::find($id);
         $sizes = Size::all();
         $categories= Category::all();
-        return view('backend.products.edit',compact('sizes','products','categories'));
-    }
+
+        $sizes= Size::all();
+        return view('backend.products.edit',compact('products','categories','sizes'));
+
 
     /**
      * Update the specified resource in storage.
@@ -148,7 +150,6 @@ class ProductController extends Controller
         $product->size_id= request('size');
 
         $product->save();
-
 
          return redirect()->route('products.index');
     }

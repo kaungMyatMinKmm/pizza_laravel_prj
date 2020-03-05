@@ -38,7 +38,11 @@
           <i class="fas fa-pizza-slice px-3 text-danger"></i>
           <h5><i>Offline POS</i></h5>
         </div>
+
+        <div class="sidebar-brand-text mx-3">Pizza</div>
+
         <!-- <div class="sidebar-brand-text mx-3">Offline POS</div> -->
+
       </a>
 
       <!-- Divider -->
@@ -195,7 +199,9 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('sb_admin/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('sb_admin/vendor/jquery/jquery.min.js')}}"></script>  
+  <script src="{{ asset('sb_admin/js/custom.js')}}"></script>
+
   <script src="{{ asset('sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript-->
