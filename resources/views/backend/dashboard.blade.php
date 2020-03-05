@@ -2,11 +2,11 @@
 @section('content')
 
   <!-- Main Content -->
-<h2>Sales</h2>
+<h2 class="m-3">Sales</h2>
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <ul class="nav nav-tabs bg-danger" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Table</a>
         </li>
@@ -20,7 +20,7 @@
           <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Product</a>
         </li>
       </ul>
-      <div class="tab-content" id="myTabContent">
+      <div class="tab-content" id="myTabContent" style="background-color:#dba24a">
 
         <div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
             <div class="container">

@@ -30,12 +30,12 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #dba24a">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-5" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15 mt-5">
-          <i class="fas fa-pizza-slice px-3"></i>
+          <i class="fas fa-pizza-slice px-3 text-danger"></i>
           <h5><i>Offline POS</i></h5>
         </div>
         <!-- <div class="sidebar-brand-text mx-3">Offline POS</div> -->
@@ -45,7 +45,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active text-dark">
+      <li class="nav-item active">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -62,8 +62,8 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog">Pages</i>
-          <span></span>
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pages:</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
