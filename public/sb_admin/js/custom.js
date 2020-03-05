@@ -2,10 +2,12 @@ $(document).ready(function () {
 
         getData();
   
-      $(".addtocart").click(function () {
+      $(".select").click(function () {
         var id = $(this).data("id");
         var name = $(this).data("name");
         var price = $(this).data("price");
+        console.log(id);
+        // console.log(name);
         // console.log(price);
 
 
@@ -112,7 +114,7 @@ $(document).ready(function () {
                      <td colspan="4">
                       <textarea class="form-control" id ="notes"></textarea></td>
                       <td colspan="3">
-                      <button class="btn btn-secondary btn-block checkoutbtn" data-total=${total}  style="background-color:#673AB7; border-color:#673AB7;">
+                      <button class="btn btn-secondary btn-block orderbtn" data-total=${total}  style="background-color:#673AB7; border-color:#673AB7;">
                       Order</button></td>
       </tr>`
 
@@ -122,6 +124,31 @@ $(document).ready(function () {
         }
 
       }
+
+      $('#total').on('click', '.orderbtn', function(){
+
+        
+
+     
+     var total =$(this).data('total');
+     var pizza = localStorage.getItem('pizza');
+     var pizzaobj = JSON.parse(pizza);
+
+     var pizzaarr = pizzaobj.mypizza;
+
+     // $.post('url','data',function(response){
+       console.log(pizzaobj);
+     // })
+      // $.post('storeorder.php',{cart:cartarr,total:total,note:note},function(response){
+      //   // console.log(response);
+
+      // });
+
+      // localStorage.clear();
+      //   showTable();
+      //   location.href="ordersuccess.php";
+     });
+
 
 
 

@@ -107,6 +107,7 @@ class ProductController extends Controller
 
         $sizes= Size::all();
         return view('backend.products.edit',compact('products','categories','sizes'));
+    }
 
 
     /**
