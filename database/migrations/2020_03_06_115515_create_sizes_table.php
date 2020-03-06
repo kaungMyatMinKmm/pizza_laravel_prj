@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RecipeTaste extends Migration
+class CreateSizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class RecipeTaste extends Migration
      */
     public function up()
     {
-        //
-         Schema::create('recipe_taste', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('recipe_id');
-            $table->unsignedBigInteger('taste_id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class RecipeTaste extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('sizes');
     }
 }

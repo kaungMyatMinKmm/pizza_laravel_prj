@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Recipe;
-
 
 class RecipeController extends Controller
 {
@@ -16,8 +14,6 @@ class RecipeController extends Controller
     public function index()
     {
         //
-        $recipes = Recipe::all();
-        return view ('backend.recipes.index',compact ('recipes'));
     }
 
     /**
@@ -28,8 +24,6 @@ class RecipeController extends Controller
     public function create()
     {
         //
-        return view ('backend.recipes.create');
-
     }
 
     /**
@@ -41,19 +35,6 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            "name" =>"required|min:3,max:191"
-           
-        ]);
-
-        $recipe = New Recipe;
-
-        $recipe->name= request('name');
-       
-        $recipe->save();
-        $recipe->Taste()->attach(request('tastes'));
-
-        return redirect()->route('recipes.index');
     }
 
     /**
@@ -76,9 +57,6 @@ class RecipeController extends Controller
     public function edit($id)
     {
         //
-        $recipes = Recipe::find($id);
-
-        return view('backend.recipes.edit',compact('recipes'));
     }
 
     /**
@@ -91,19 +69,6 @@ class RecipeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            "name" =>"required|min:3,max:191"
-           
-        ]);
-
-        $recipe = New Recipe;
-
-        $recipe->name= request('name');
-       
-        $recipe->save();
-        $recipe->Taste()->attach(request('tastes'));
-
-        return redirect()->route('recipes.index');
     }
 
     /**
@@ -115,10 +80,5 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
-
-        $recipe= Recipe::find($id);
-        $recipe->delete();
-
-        return redirect()->route('recipes.index');
     }
 }

@@ -1,50 +1,97 @@
 $(document).ready(function () {
 
         getData();
+        //gettablename();
+
+        // $("#table_no").click(function () {
+        //   var table_name= $(this).data("name");
+        //   $('#ordertablename').val(table_name);
+        // })
+
+
   
       $(".select").click(function () {
         var id = $(this).data("id");
         var name = $(this).data("name");
         var price = $(this).data("price");
-        console.log(id);
+        // console.log(id);
         // console.log(name);
         // console.log(price);
-
-
-        var pizza = {
-          id:id,
-          name:name,
-          price:price
-        }
-        // console.log(pizza);
-
-        var pizzaString=localStorage.getItem("pizza");
-        var pizzaArray;
-        if (pizzaString==null) {
-          pizzaArray=Array();
-        } else {
-          pizzaArray=JSON.parse(pizzaString);
-        }
-
-        var  status=false;
-
-        $.each(pizzaArray,function (i,v) {
-          if (id==v.id){
-            status=true;
-            
-          }
-        })
-
-
-        if (!status) {
-          pizzaArray.push(pizza);
-        }
-        var pizzaData=JSON.stringify(pizzaArray);
-        localStorage.setItem("pizza",pizzaData);
-        getData();
-
-
+        storeData(id,name,price);
       });
+
+      function storeData(id,name,price)
+          {
+            var qty = 1;
+            var mylist = {id: id,name:name,price:price,qty:qty};
+            var pizza = localStorage.getItem('pizza');
+
+            if (!pizza)
+            {
+              var pizza = '{"mypizza":[]}';
+            }
+
+            pizza = JSON.parse(pizza);
+
+            var mypizza = pizza.mypizza;
+            var length = mypizza.length;
+
+            for (var i =0;i<length; i++) 
+            {
+              if (id == mypizza[i].id)
+              {
+                var exit = 1;
+                mypizza[i].qty +=1;
+              }
+            }
+
+            if(!exit)
+            {
+              pizza.mypizza.push(mylist);
+            }
+            pizza = JSON.stringify(pizza);
+            localStorage.setItem('pizza', pizza);
+
+            getData();
+          }
+
+
+
+
+      //   var pizza = {
+      //     id:id,
+      //     name:name,
+      //     price:price
+      //   }
+      //   // console.log(pizza);
+
+      //   var pizzaString=localStorage.getItem("pizza");
+      //   var pizzaArray;
+      //   if (pizzaString==null) {
+      //     pizzaArray=Array();
+      //   } else {
+      //     pizzaArray=JSON.parse(pizzaString);
+      //   }
+
+      //   var  status=false;
+
+      //   $.each(pizzaArray,function (i,v) {
+      //     if (id==v.id){
+      //       status=true;
+            
+      //     }
+      //   })
+
+
+      //   if (!status) {
+      //     pizzaArray.push(pizza);
+      //   }
+      //   var pizzaData=JSON.stringify(pizzaArray);
+      //   localStorage.setItem("pizza",pizzaData);
+      //   getData();
+
+
+      // });
 
 
     function getData() {
@@ -54,17 +101,20 @@ $(document).ready(function () {
       if(pizzaString){
         var pizzaArray = JSON.parse(pizzaString);
 
+        var mypizza =pizzaArray.mypizza
+
         var html=""; var qty=1;var total=0;
         var j= 1;
 
-          $.each(pizzaArray,function (i,v) {
+          $.each(mypizza,function (i,v) {
             // console.log(v);
+
             var name = v.name;
             var price = v.price;
             var subtotal = qty*price;
             // var subtotal = qty*price;
             //total+=parseInt(subtotal);
-            // console.log(subtotal);
+            console.log(price);
 
             html+=`<tr>
             <td>${j++}</td>
@@ -92,7 +142,7 @@ $(document).ready(function () {
 
 
            
-              console.log(total);
+              // console.log(total);
 
                 // console.log(typeof(total));
                 
@@ -105,14 +155,16 @@ $(document).ready(function () {
             var myfoot="";
 
         myfoot += `<tr>
-                    <td colspan="5">
+                    <td colspan="1">
                     <h5 class="text-right"> Total : ${total}Ks</h5></td>
+                    <td colspan="1">
+                    <h5 class="text-left "> Table No:</h5></td>
                   </tr>
 
 
       <tr>
                      <td colspan="4">
-                      <textarea class="form-control" id ="notes"></textarea></td>
+                      <textarea class="form-control" id ="recipe"></textarea></td>
                       <td colspan="3">
                       <button class="btn btn-secondary btn-block orderbtn" data-total=${total}  style="background-color:#673AB7; border-color:#673AB7;">
                       Order</button></td>
@@ -125,24 +177,34 @@ $(document).ready(function () {
 
       }
 
-      $('#total').on('click', '.orderbtn', function(){
+     //  $('#total').on('click', '.orderbtn', function(){
 
         
+     //  var table_no= $("#table_no").val();
+     // var recipe = $("#recipe").val();
+     // var total =$(this).data('total');
+     // var pizza = localStorage.getItem('pizza');
+     // var pizzaobj = JSON.parse(pizza);
 
-     
-     var total =$(this).data('total');
-     var pizza = localStorage.getItem('pizza');
-     var pizzaobj = JSON.parse(pizza);
+     // // var pizzaarr = pizzaobj.pizza;
+     // console.log(table_no);
+     //  $.ajaxSetup({
+     //      headers: {
+     //          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+     //      }
+     //  });  
 
-     var pizzaarr = pizzaobj.mypizza;
+     //    $.post('/orders',{pizza:pizzaobj,total:total,recipe:recipe,table_no:table_no},function(response){
+       
+
+     //  });
+     // console.log(pizzaobj);
 
      // $.post('url','data',function(response){
-       console.log(pizzaobj);
+       
      // })
-      // $.post('storeorder.php',{cart:cartarr,total:total,note:note},function(response){
-      //   // console.log(response);
 
-      // });
+      
 
       // localStorage.clear();
       //   showTable();
@@ -152,4 +214,4 @@ $(document).ready(function () {
 
 
 
-});
+// });
