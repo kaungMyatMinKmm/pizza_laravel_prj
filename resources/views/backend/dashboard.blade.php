@@ -8,31 +8,29 @@
       <div class="col-lg-8">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Table</a>
+              <a class="nav-link active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Topping</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Category</a>
+              <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Crust</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Size</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Product</a>
-            </li>
+            
           </ul>
           <div class="tab-content" id="myTabContent">
 
           <div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
               <div class="container">
                  <div class="row ">
-                        @foreach($tables as $row)
+                        @foreach($toppings as $row)
                           
                           
                           <div class="card col-sm-2 m-2 p-2 rounded-circle" >
                             <div class="card-body rounded-circle text-dark" style="background-color: #B29882">
-                              <h5 class="card-title" >{{$row->table_no}}</h5>
+                              <h5 class="card-title" >{{$row->name}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="table" class="select" id="table_no" value="{{$row->id}}" data-name="{{$row->table_no}}" >
+                              <input type="radio" name="table" id="topping" class="select"data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}" >
                             </div>
                           </div>
                         @endforeach 
@@ -43,7 +41,7 @@
           <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
               <div class="container">
                  <div class="row ">
-                        @foreach($categories as $row)
+                        @foreach($crusts as $row)
                           
                           
                           <div class="card col-lg-4 w-10 h-10 m-2">
@@ -52,7 +50,7 @@
           
                               <h5 class="card-title">{{$row->name}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="category" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}">
+                              <input type="radio" name="category" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
                             </div>
                           </div>
                         @endforeach 
@@ -75,21 +73,7 @@
                         @endforeach
                   </div> 
             </div>
-          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              <div class="row">
-                   @foreach($products as $row)
-                  
-                      <div class="card col-lg-4 w-10 h-10 m-2">
-                         <img src="{{$row->photo}}" class="card-img-top " style="width: 10; height: 10;" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">{{$row->product_name}}</h5>
-                          <input type="checkbox" name="product" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->product_name}}" data-price="{{$row->price}}">
-                        </div>
-                      </div>
-                     
-                    @endforeach
-              </div> 
-          </div>
+         
         </div>
       </div>
 

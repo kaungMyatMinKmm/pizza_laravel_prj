@@ -72,12 +72,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"> Pages:</h6>
-            <a class="collapse-item" href="{{route('categories.index')}}">Category</a>
-            <a class="collapse-item" href="{{route('products.index')}}">Product</a>
-            <a class="collapse-item" href="{{route('tastes.index')}}">Taste</a>
-            <a class="collapse-item" href="{{route('tables.index')}}">Table</a>
-            <a class="collapse-item" href="{{route('recipes.index')}}">Recipe</a>
-            <a class="collapse-item" href="{{route('sizes.index')}}">Size</a>
+          
           </div>
         </div>
       </li>

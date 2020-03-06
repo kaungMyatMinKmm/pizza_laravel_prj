@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Category;
+use App\Topping;
 use App\Size;
-use App\Product;
-use App\Table;
+use App\Crust;
+
 class BackendController extends Controller
 {
     public function dashboard($value='')
     {
+    	$toppings = Topping::all();
     	$sizes = Size::all();
-    	$products = Product::all();
-    	$categories = Category::all();
-    	$tables = Table::all();
-    	return view('backend.dashboard',compact('categories','sizes','products','tables'));
+    	$crusts = Crust::all();
+    	return view('backend.dashboard',compact('toppings','sizes','crusts'));
     }
 
 }
