@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Topping;
 
 class ToppingController extends Controller
 {
@@ -13,7 +14,8 @@ class ToppingController extends Controller
      */
     public function index()
     {
-        //
+        $toppings = Topping::all();
+        return view('backend.toppings.index',compact('toppings'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ToppingController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.toppings.create');
     }
 
     /**
@@ -34,7 +36,35 @@ class ToppingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => 'required|min:5|max:191',
+            "photo" => 'required|mimes:jpeg,jpg,png',
+            "price" => 'required'
+             
+
+
+        ]);
+        // Upload // (3)
+
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $upload_dir = public_path().'/storage/pizza_img/';
+
+            $name = time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($upload_dir,$name);
+            $path = '/storage/pizza_img/'.$name;
+        }
+
+        //Store Data (4)
+        $topping = new Topping;
+        $topping->name = request('name') ;
+        $topping->price = request('price') ;
+        $topping->photo = $path;
+
+        $topping->save();
+
+        // return redirect (5)
+        return redirect()->route('toppings.index');
     }
 
     /**
@@ -56,7 +86,8 @@ class ToppingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $topping = Topping::find($id);
+        return view('backend.toppings.edit',compact('topping'));
     }
 
     /**
@@ -68,7 +99,38 @@ class ToppingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $request->validate([
+            "name" => 'required|min:5|max:191',
+            "photo" => 'sometimes|mimes:jpeg,jpg,png',
+            "price" => 'required'
+           
+
+
+        ]);
+        // Upload // (3)
+
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $upload_dir = public_path().'/storage/pizza_img/';
+
+            $name = time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($upload_dir,$name);
+            $path = '/storage/pizza_img/'.$name;
+        }else{
+            $path = request('oldphoto');
+        }
+
+        //Update Data (4)
+        $topping = Topping::find($id);
+        $topping->name = request('name') ;
+        $topping->photo = $path;
+        $topping->price = request('price') ;
+        
+
+        $topping->save();
+
+        // return redirect (5)
+        return redirect()->route('toppings.index');
     }
 
     /**
@@ -79,6 +141,8 @@ class ToppingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $topping = Topping::find($id);
+        $topping->delete();
+        return redirect()->route('toppings.index');
     }
 }

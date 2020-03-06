@@ -24,18 +24,18 @@ Route::group([
 ],function(){
 
 
-Route::resource('sizes','SizeController');
-Route::resource('products','ProductController');
+Route::resource('crusts','CrustController');
+Route::resource('toppings','ToppingController');
 
-Route::resource('tables','TableController');
-
-Route::resource('tastes','TasteController');
 Route::resource('sizes','SizeController');
-Route::resource('recipes','RecipeController');
+
+// Route::resource('tastes','TasteController');
+// Route::resource('sizes','SizeController');
+// Route::resource('recipes','RecipeController');
 
 
 });
-Route::resource('orders','OrderController');
+// Route::resource('orders','OrderController');
 
 
 Route::get('dashboard', 'BackendController@dashboard');
