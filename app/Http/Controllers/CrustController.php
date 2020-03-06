@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Crust;
+
 class CrustController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class CrustController extends Controller
      */
     public function index()
     {
-        //
+        $crusts = Crust::all();
+        return view('backend.crusts.index',compact('crusts'));
     }
 
     /**
@@ -23,7 +26,7 @@ class CrustController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.crusts.create');
     }
 
     /**
@@ -34,7 +37,35 @@ class CrustController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => 'required|min:5|max:191',
+            "price" => 'required',
+            "photo" => 'required|mimes:jpeg,jpg,png'
+             
+
+
+        ]);
+        // Upload // (3)
+
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $upload_dir = public_path().'/storage/pizza_img/';
+
+            $name = time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($upload_dir,$name);
+            $path = '/storage/pizza_img/'.$name;
+        }
+
+        //Store Data (4)
+        $crust = new Crust;
+        $crust->name = request('name') ;
+        $crust->price = request('price') ;
+        $crust->photo = $path;
+
+        $crust->save();
+
+        // return redirect (5)
+        return redirect()->route('crusts.index');
     }
 
     /**
@@ -45,7 +76,7 @@ class CrustController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +87,8 @@ class CrustController extends Controller
      */
     public function edit($id)
     {
-        //
+        $crust = Crust::find($id);
+        return view('backend.crusts.edit',compact('crust'));
     }
 
     /**
@@ -68,7 +100,38 @@ class CrustController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name" => 'required|min:5|max:191',
+            "photo" => 'sometimes|mimes:jpeg,jpg,png',
+            "price" => 'required'
+           
+
+
+        ]);
+        // Upload // (3)
+
+        if ($request->hasfile('photo')) {
+            $photo = $request->file('photo');
+            $upload_dir = public_path().'/storage/pizza_img/';
+
+            $name = time().'.'.$photo->getClientOriginalExtension();
+            $photo->move($upload_dir,$name);
+            $path = '/storage/pizza_img/'.$name;
+        }else{
+            $path = request('oldphoto');
+        }
+
+        //Update Data (4)
+        $crust = Crust::find($id);
+        $crust->name = request('name') ;
+        $crust->photo = $path;
+        $crust->price = request('price') ;
+        
+
+        $crust->save();
+
+        // return redirect (5)
+        return redirect()->route('crusts.index');
     }
 
     /**
@@ -79,6 +142,8 @@ class CrustController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $crust = Crust::find($id);
+        $crust->delete();
+        return redirect()->route('crusts.index');
     }
 }
