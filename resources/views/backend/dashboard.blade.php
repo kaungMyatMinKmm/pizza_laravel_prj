@@ -30,9 +30,9 @@
                           
                           <div class="card col-sm-2 m-2 p-2 rounded-circle" >
                             <div class="card-body rounded-circle text-dark" style="background-color: #B29882">
-                              <h5 class="card-title">{{$row->table_no}}</h5>
+                              <h5 class="card-title" >{{$row->table_no}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="table" value="{{$row->id}}">
+                              <input type="radio" name="table" class="select" id="table_no" value="{{$row->id}}" data-name="{{$row->table_no}}" >
                             </div>
                           </div>
                         @endforeach 
@@ -52,7 +52,7 @@
           
                               <h5 class="card-title">{{$row->name}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="category" value="{{$row->id}}">
+                              <input type="radio" name="category" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}">
                             </div>
                           </div>
                         @endforeach 
@@ -68,7 +68,7 @@
                              <img src="{{$row->photo}}" class="card-img-top"style="width: 10; height: 10;">
                             <div class="card-body">
                               <h5 class="card-title">{{$row->name}}</h5>
-                              <input type="radio" name="size" value="{{$row->id}}">
+                              <input type="radio" name="size" class="select" value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
                             </div>
                           </div>
                          
@@ -83,7 +83,7 @@
                          <img src="{{$row->photo}}" class="card-img-top " style="width: 10; height: 10;" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">{{$row->product_name}}</h5>
-                          <input type="checkbox" name="product" value="{{$row->id}}">
+                          <input type="checkbox" name="product" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->product_name}}" data-price="{{$row->price}}">
                         </div>
                       </div>
                      

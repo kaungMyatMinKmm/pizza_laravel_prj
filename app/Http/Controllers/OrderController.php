@@ -4,11 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Order;
-
-use App\Recipe;
-use App\Table;
-
 class OrderController extends Controller
 {
     /**
@@ -18,8 +13,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return view('backend.orders.index',compact('orders'));
+        //
     }
 
     /**
@@ -29,8 +23,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $tables = Table::all();
-        return view('backend.orders.create',compact('tables'));
+        //
     }
 
     /**

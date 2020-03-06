@@ -20,7 +20,7 @@
   <link href="{{asset('select2/css/select2.min.css')}}" rel="stylesheet"/>
 
   <link href="{{ asset('select2/css/select2.min.css')}}" rel="stylesheet" />
-
+<meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 

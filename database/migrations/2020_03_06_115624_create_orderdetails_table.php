@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTastesTable extends Migration
+class CreateOrderdetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateTastesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tastes', function (Blueprint $table) {
+        Schema::create('orderdetails', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateTastesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tastes');
+        Schema::dropIfExists('orderdetails');
     }
 }
