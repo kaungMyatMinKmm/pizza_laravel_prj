@@ -15,6 +15,9 @@ class CreateCrustsTable extends Migration
     {
         Schema::create('crusts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('price');
+            $table->text('photo');
             $table->timestamps();
         });
     }

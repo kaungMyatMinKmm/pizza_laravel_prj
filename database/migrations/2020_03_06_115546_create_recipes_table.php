@@ -15,7 +15,21 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('topping_id');
+            $table->unsignedBigInteger('crust_id');
+            $table->unsignedBigInteger('size_id');
+            $table->integer('price');
             $table->timestamps();
+
+            $table->foreign('topping_id')
+                  ->references('id')->on('toppings')
+                  ->onDelete('cascade');
+            $table->foreign('crust_id')
+                  ->references('id')->on('crusts')
+                  ->onDelete('cascade');
+            $table->foreign('size_id')
+                  ->references('id')->on('sizes')
+                  ->onDelete('cascade');
         });
     }
 

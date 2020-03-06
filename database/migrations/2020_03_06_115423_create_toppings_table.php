@@ -15,6 +15,9 @@ class CreateToppingsTable extends Migration
     {
         Schema::create('toppings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('price');
+            $table->text('photo');
             $table->timestamps();
         });
     }

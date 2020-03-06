@@ -24,7 +24,7 @@ Route::group([
 ],function(){
 
 
-Route::resource('categories','CategoryController');
+Route::resource('sizes','SizeController');
 Route::resource('products','ProductController');
 
 Route::resource('tables','TableController');

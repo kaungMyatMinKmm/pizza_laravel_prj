@@ -15,7 +15,15 @@ class CreateOrderdetailsTable extends Migration
     {
         Schema::create('orderdetails', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('voucher_no');
+            $table->unsignedBigInteger('recipe_id');
+            $table->integer('qty');
             $table->timestamps();
+
+            $table->foreign('recipe_id')
+                  ->references('id')->on('recipes')
+                  ->onDelete('cascade');
+
         });
     }
 
