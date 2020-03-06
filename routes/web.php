@@ -14,6 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/','FrontendController@main')->name('main');
 Route::group([
 
 'middleware' => 'auth',

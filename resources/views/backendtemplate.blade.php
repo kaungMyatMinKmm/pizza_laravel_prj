@@ -39,7 +39,7 @@
           <h5><i>Offline POS</i></h5>
         </div>
 
-        <div class="sidebar-brand-text mx-3">Pizza</div>
+        <!-- <div class="sidebar-brand-text mx-3">Pizza</div> -->
 
         <!-- <div class="sidebar-brand-text mx-3">Offline POS</div> -->
 

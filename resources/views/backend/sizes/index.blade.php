@@ -55,12 +55,12 @@
 								<td>
 									<!-- <a href="#" class="btn btn-info detail" data-id="{{$row->id}}">Detail</a> -->
 									
-									<a href="{{route('sizes.edit',$row->id)}}" class="btn btn-warning">Edit</a>
+									<a href="{{route('sizes.edit',$row->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
 									<form method="post" action="{{route('sizes.destroy',$row->id)}}" onsubmit="return confirm('Are You Sure?')" class="d-inline-flex">
 										@csrf
 										@method('DELETE')
 
-									<button type="submit" class="btn btn-danger"> Delete
+									<button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
 									</button>	
 									</form>
 								</td>

@@ -1,4 +1,4 @@
-	@extends ('backendtemplate');
+@extends ('backendtemplate');
 @section('content');
 
 
@@ -46,13 +46,13 @@
 								<td>{{$row->price}}</td>
 								
 								<td>
-									<a href="#" class="btn btn-info detail" data-id="{{$row->id}}">Detail</a>
-									<a href="{{route('products.edit',$row->id)}}" class="btn btn-warning">Edit</a>
+									<a href="#" class="btn btn-info detail" data-id="{{$row->id}}"><i class="fas fa-info"></i></a>
+									<a href="{{route('products.edit',$row->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
 									<form method="post" action="{{route('products.destroy',$row->id)}}" onsubmit="return confirm('Are You Sure?')" class="d-inline-flex">
 										@csrf
 										@method('DELETE')
 
-									<button type="submit" class="btn btn-danger"> Delete
+									<button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
 									</button>	
 									</form>
 								</td>
