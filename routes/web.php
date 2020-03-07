@@ -47,4 +47,4 @@ Route::get('dashboard', 'BackendController@dashboard');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/orders','OrderController@store');
+Route::get('/recipes','RecipeController@store');

@@ -83,9 +83,7 @@
                     <tr>
                       <th>No</th>
                       <th>Name</th>
-                      <th>Qty</th>
                       <th>Price</th>
-                      <th>Subtotal</th>
                     </tr>
                   </thead>
                   <tbody id="order">

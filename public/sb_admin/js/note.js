@@ -207,3 +207,107 @@ $(document).ready(function () {
 
 
 // });
+
+
+  var html = "";
+      var tfoot = "";
+      var i;
+      var qty;
+      var reprcie;
+      var data = $('.id').last().val();
+      // alert(id);
+      var data = $('.data').last().text();
+      var price_plus = $('.price').last().val();
+      var num=parseInt(data);
+      var pricetotal = parseInt(price_plus);
+      var orgin_price = parseInt(price);
+      // alert(pricetotal);
+
+      // alert(num);
+      if(data < 1)
+      {
+        data=id;
+        i=1;
+        qty=1;
+        reprice = price;
+      }
+      else{
+        // data=id+',';
+        i=num+1;
+        reprice = pricetotal+orgin_price;
+        qty=1;
+      }
+      // alert(data);
+      // alert(reprice);
+
+      html += `<tr>
+                <td class="data" value="${i}">${i}</td>
+                <td><input type='text' class="id" value="${id}"></td>
+                <input type="hidden" class="price" value="${reprice}">
+                <td>${price}</td>
+              </tr>`;
+      
+      tfoot += `<tr>
+                      <td colspan="2">Subtotal</td>
+                      <td class="subtotal">${reprice}</td>
+                </tr>
+                <tr>
+                <td colspan="2">Qty</td>
+                <td><input type="number" class="form-control total_qty_price"></td>
+                </tr>
+                <tr>
+                <td colspan="2">Total</td>
+                <td class="total_price"></td>
+                </tr>
+                <tr>
+                <td colspan="2"></td>
+                  <td><button class="btn btn-success btn_create" data-topping_id="${id}" data-crust=
+                  ${id} >Create</button></td>
+                </tr>`;
+
+      $('#order').append(html);
+      $('#total').html(tfoot);
+
+
+      $('#total').on('change','.total_qty_price',function(){
+        var qty = $(this).val();
+        var subtotal = $('.subtotal').text();
+        var total = qty * subtotal;
+        $('.total_price').text(total);
+      });
+
+      $('#total').on('click','.btn_create',function(){
+        var top_id = $(this).data('topping_id');
+        var crust_id = $(this).data('crust_id'); 
+        alert(top_id);
+        // var id = $('#order').val();
+        // console.log(id.length);
+        
+
+      })
+    // console.log(pizza);
+
+        // var html=""; var qty=1;var total=0;
+        // var j= 1;
+
+        // $.each(pizza,function (i,v) {
+        //   console.log(v);
+        //     var name = v.name;
+        //     var price = v.price;
+        //     var qty = v.qty;
+
+        //     //console.log($name);
+    
+        //     html+=`<tr>
+        //     <td>${j++}</td>
+        //     <td>${name}</td>
+        //     <td>${price}</td>
+        //     <td>${qty}</td>
+        //     <tr>`
+
+        //   });
+      
+
+        //   $('#order').html(html);
+  })
+});
