@@ -2,7 +2,7 @@
 @section('content')
 
   <!-- Main Content -->
-<h2>Sales</h2>
+<h2>Sales (Select All your recipe)</h2>
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
@@ -83,9 +83,7 @@
                     <tr>
                       <th>No</th>
                       <th>Name</th>
-                      <th>Qty</th>
                       <th>Price</th>
-                      <th>Subtotal</th>
                     </tr>
                   </thead>
                   <tbody id="order">

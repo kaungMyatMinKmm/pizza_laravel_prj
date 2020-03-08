@@ -35,8 +35,8 @@ Route::resource('sizes','SizeController');
 
 
 });
-// Route::resource('orders','OrderController');
-
+Route::resource('orders','OrderController');
+Route::post('order_store','OrderController@order_store')->name('order_store');
 
 Route::get('dashboard', 'BackendController@dashboard');
 
@@ -47,4 +47,4 @@ Route::get('dashboard', 'BackendController@dashboard');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/orders','OrderController@store');
+Route::get('/recipes','RecipeController@store');
