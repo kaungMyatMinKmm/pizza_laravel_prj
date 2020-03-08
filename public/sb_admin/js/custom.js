@@ -19,14 +19,7 @@ $(document).ready(function () {
         } else {
           recipeArray=JSON.parse(recipeString);
         }
-        var status=false;
-
-        $.each(recipeArray,function (i,v) {
-          if (id==v.id) {
-            v.qty++;
-          }
-
-          });
+      
 
         if (!status) {
           recipeArray.push(recipe);
@@ -56,16 +49,15 @@ $(document).ready(function () {
             var price = v.price;
             var qty = v.qty;
             var subtotal = qty*price;
-            // console.log(typeof subtotal);
-            // total+=parseInt(subtotal);
-            subtotal1+=parseInt(subtotal);
-            // console.log(typeof total);
+            console.log(qty);
+           
+            subtotal1+=subtotal++;
 
             html+=`<tr>
             <td>${j++}</td>
             <td>${name}</td>
             <td>${price}</td>
-            <td><button class="delete" data-id="${i}">Delete</button></td>
+            <td><button class="btn btn-danger deletebtn" data-id="${i}">Delete</button></td>
             </tr> `;
             
               
@@ -76,9 +68,13 @@ $(document).ready(function () {
             $("#order").html(html);
 
             myfoot +=`<tr>
-            <td colspan=5>
-            <h5 class="text-right">Subtotal: ${subtotal1}Ks</h5></td>
-            </td> </tr>
+            <td colspan=3>
+            <h5 class="text-left">Subtotal: ${subtotal1}Ks,</h5></td>
+            </td>
+            <td colspan=3>
+            <h5 class="text-right">Qty:</h5></td>
+            </td>
+             </tr>
             <tr>
             <td>
               <button class="btn btn-secondary btn-block createbtn"   style="background-color:#673AB7; border-color:#673AB7;">
@@ -95,45 +91,106 @@ $(document).ready(function () {
 
       }
 
-  $('#total').on('click', '.createbtn', function(){
+      $('#total').on('click','.createbtn', function () {
 
-        var recipeString = localStorage.getItem('recipe');
-        
+
+
+        var recipeString=localStorage.getItem("recipe");
         var recipeArray = JSON.parse(recipeString);
-        // console.log(typeof(createArray));
-         // console.log(createArray);
+
         var createString = localStorage.getItem('create');
-        var array_data;
-        if(!createString)
-        {
-          array_data=Array();
-        }else{
+        var createArray;
 
-          array_data = JSON.parse(createString);
-
+        if (createString==null){
+          createArray=Array();
+        } else {
+          createArray=JSON.parse(createString);
         }
-        var data = {
-          id:id,
-        }
-        // console.log(typeof(array_data));
+        var status=false;
 
-        var id;
         $.each(recipeArray,function (i,v) {
         
-        if(data.id != v.id){
-          data.id = v.id;
-         array_data.push(data);
-        var idData=JSON.stringify(array_data);
-        localStorage.setItem("create",idData);
+         var create = v.id;
+
+         create = {id:create};
+
+         // console.log(create);
+
+        
+
+        if (!status) {
+          createArray.push(create);
         }
-     });
+        var createData=JSON.stringify(createArray);
+        localStorage.setItem("create",createData);
+       });
+        
+      })
 
 
-         console.log(localStorage.getItem('create'));
+    $("tbody").on('click', ".deletebtn", function () {
+    var id = $(this).data('id');
+    // console.log(id);
+    var ans = confirm("Are you sure want to delete?");
 
-          
+    if (ans) {
+      var recipe = localStorage.getItem('recipe');
+      var recipeObj = JSON.parse(recipe);
+      
 
+      recipeObj.splice(id,1);
+      var recipeObj = JSON.stringify(recipeObj);
+      console.log(recipeObj);
+      localStorage.setItem('recipe',recipeObj);
+      getData();
+
+      
+    }
 
    });
+
+  // $('#total').on('click', '.createbtn', function(){
+
+  //       var recipeString = localStorage.getItem('recipe');
+        
+  //       var recipeArray = JSON.parse(recipeString);
+  //       // console.log(typeof(createArray));
+  //        // console.log(createArray);
+  //       var createString = localStorage.getItem('create');
+  //       var array_data;
+
+
+  //       if(!createString)
+  //       {
+  //         array_data=Array();
+  //       }else{
+
+  //         array_data = JSON.parse(createString);
+
+  //       }
+  //       var data = {
+  //         id:id,
+  //       }
+  //       // console.log(typeof(array_data));
+
+  //       var id;
+  //       var status=false;
+  //       $.each(recipeArray,function (i,v) {
+        
+        
+  //         data.id = v.id;
+  //         if (!status) {
+  //        array_data.push(data);
+  //        }
+  //       var idData=JSON.stringify(array_data);
+  //       console.log(idData);
+  //       localStorage.setItem("create",idData);
+        
+  //    });
+
+
+  //        // console.log(localStorage.getItem('create'));
+
+  //  });
 });
 
