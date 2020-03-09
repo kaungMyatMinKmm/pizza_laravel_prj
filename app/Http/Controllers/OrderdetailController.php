@@ -82,7 +82,9 @@ class OrderdetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orderdetail = Orderdetail::find($id);
+        $orderdetail->delete();
+        return redirect()->route('orderdetails.index');
     }
     public function order_store(Request $request)
     {

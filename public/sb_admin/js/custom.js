@@ -88,7 +88,7 @@ $.ajaxSetup({
             <h5 class="text-left price" data-price = "${subtotal}">Subtotal: ${subtotal}Ks,</h5></td>
             </td>
             <td colspan="2">
-            <h5 class="text-right">Qty:<input type="number" class="form-control qty" value="1"> </h5>
+            <h5 class="text-right">Qty:<input type="number" class="form-control qty" value="0"> </h5>
 
             </td>
             </td>
@@ -126,8 +126,12 @@ $.ajaxSetup({
    
 
       $('#total').on('click','.createbtn',function () {
+      
          var data="";
-             data+= `<button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>`;
+             data+= `
+                    <button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>
+                    <button class="btn btn-secondary btn-block print"  style="background-color:#00FF00;">Print</button>
+                    `;
              $('.orderbtn').html(data);
 
 
@@ -211,6 +215,7 @@ $.ajaxSetup({
           
         }
         localStorage.clear();
+        location.reload();
 
       })
 
