@@ -35,7 +35,7 @@ $.ajaxSetup({
         var recipeData=JSON.stringify(recipeArray);
         localStorage.setItem("recipe",recipeData);
         getData();
-        location.reload();
+        // location.reload();
       
 
   });
@@ -125,7 +125,7 @@ $.ajaxSetup({
       })
    
 
-      $('#total').on('click','.createbtn', function () {
+      $('#total').on('click','.createbtn',function () {
          var data="";
              data+= `<button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>`;
              $('.orderbtn').html(data);
@@ -198,19 +198,36 @@ $.ajaxSetup({
         // localStorage.clear();
       })
 
-      $('.orderbtn').on('click','.order_recipe',function(){
+      $('#total').on('click','.order_recipe',function(){
+        // alert('helo');
         var recipeString = localStorage.getItem('create');
+        console.log(recipeString);
         if(recipeString)
         {
           var recipeArray = JSON.parse(recipeString);
-          $.post("/order_store",{data:recipeArray},function(res){
-            console.log(res);
+          $.post("/backend/order_store",{data:recipeArray},function(res){
+            // console.log(res);
           })
           
         }
-
+        localStorage.clear();
 
       })
+
+      // $('.order_recipe').click(function(){
+
+      //   var recipeString = localStorage.getItem('create');
+      //   console.log(recipeString);
+      //   if(recipeString)
+      //   {
+      //     var recipeArray = JSON.parse(recipeString);
+      //     $.post("/backend/order_store",{data:recipeArray},function(res){
+      //       // console.log(res);
+      //     })
+          
+      //   }
+
+      // })
 
 
 
@@ -242,9 +259,9 @@ $.ajaxSetup({
 
 
 
-$('#something').click(function() {
-    location.reload();
-});
+// $('#something').click(function() {
+//     location.reload();
+// });
 
   // $('#total').on('click', '.createbtn', function(){
 
