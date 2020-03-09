@@ -47,7 +47,7 @@ Route::resource('sizes','SizeController');
 
 // Route::resource('orderdetails','OrderdetailController');
 Route::post('order_store','OrderdetailController@order_store')->name('order_store');
-// Route::post('order_store','OrderController@order_store')->name('order_store');
+Route::post('order_store','OrderController@order_store')->name('order_store');
 
 Route::get('dashboard', 'BackendController@dashboard');
 
