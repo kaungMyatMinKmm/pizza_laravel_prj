@@ -1,4 +1,5 @@
 $(document).ready(function () {
+getData();
 
 $.ajaxSetup({
     headers: {
@@ -6,7 +7,8 @@ $.ajaxSetup({
     }
 });
 
-  getData();
+
+  
   $('.select').click(function () {
     var id = $(this).data("id");
     var name = $(this).data("name");
@@ -33,8 +35,11 @@ $.ajaxSetup({
         var recipeData=JSON.stringify(recipeArray);
         localStorage.setItem("recipe",recipeData);
         getData();
+        // location.reload();
+      
 
   });
+  
 
 
       function getData() {
@@ -106,8 +111,9 @@ $.ajaxSetup({
         }
 
       }
-
+      
       $('.qty').change(function(){
+
         var qty = $(this).val();
         var price = $('.price').data('price');
 
@@ -117,6 +123,7 @@ $.ajaxSetup({
         $('.total_price').text(total_price);
 
       })
+   
 
       $('#total').on('click','.createbtn', function () {
          var data="";
@@ -192,7 +199,6 @@ $.ajaxSetup({
         // localStorage.clear();
       })
 
-
       $('.orderbtn').on('click','.order_recipe',function(){
         
         var recipeString = localStorage.getItem('create');
@@ -203,12 +209,20 @@ $.ajaxSetup({
             console.log(res);
           })
 
+
         }
 
 
         localStorage.clear();
        
-      })
+
+          
+        
+
+
+      });
+
+
 
 
 
@@ -230,8 +244,17 @@ $.ajaxSetup({
 
       
     }
+    // getData();
 
    });
+
+
+
+
+
+// $('#something').click(function() {
+//     location.reload();
+// });
 
   // $('#total').on('click', '.createbtn', function(){
 

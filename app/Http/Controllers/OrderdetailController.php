@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Recipe;
 use App\Orderdetail;
 use Illuminate\Support\Facades\URL;
+
+
+use App\Orderdetail;
 
 class OrderdetailController extends Controller
 {
@@ -88,5 +92,38 @@ class OrderdetailController extends Controller
     public function destroy($id)
     {
         //
+    }
+     public function order_store(Request $request)
+    {
+        $voucher = date("YmdH");
+        // $orderdate = date('Y-m-d');
+        dd($voucher);
+        $qty=1;
+        $data = request('data');
+        foreach ($data as $value) {
+           
+            $recipe = new Recipe;
+            $recipe->topping_id = $value['topping_id'];
+            $recipe->crust_id = $value['crust_id'];
+            $recipe->size_id = $value['size_id'];
+            $recipe->qty = $value['qty'];
+            $recipe->price = $value['price'];
+            $recipe->save();
+            $total+=$value['price'];
+
+        }
+
+        $orderdetail = new Orderdetail;
+        $orderdetail->voucher_no = $voucher;
+        
+
+        $order->save();
+
+        // $orderdetail = new Orderdetail;
+        // dd($ordetail);
+        // $orderdetail->voucher_no = $voucher;
+        // $orderdetail->recipe_id = $recipe;
+
+        // $orderdetail->qty = $qty;
     }
 }

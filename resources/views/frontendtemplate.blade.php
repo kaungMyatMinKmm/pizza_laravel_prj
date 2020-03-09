@@ -26,16 +26,16 @@
   			<div class="collapse navbar-collapse" id="navbarNav">
     			<ul class="navbar-nav ml-auto">
       				<li class="nav-item active">
-        				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        				<a class="nav-link" href="{{route('main')}}">Home <span class="sr-only">(current)</span></a>
       				</li>
       				<!-- <li class="nav-item">
         				<a class="nav-link" href="#">Features</a>
       				</li> -->
       				<li class="nav-item">
-        				<a class="nav-link" href="#">Contact</a>
+        				<a class="nav-link" href="{{route('contactpage')}}">Contact</a>
       				</li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="{{route('aboutpage')}}">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign In| Sign Up</a>

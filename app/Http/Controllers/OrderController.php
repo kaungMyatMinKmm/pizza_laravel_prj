@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Recipe;
 use App\Order;
 
+
 class OrderController extends Controller
 {
     /**
@@ -15,7 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::all();
+
+        return view('backend.orders.index',compact('orders'));
     }
 
     /**
@@ -82,14 +85,15 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->route('orders.index');
     }
 
      public function order_store(Request $request)
     {
         $voucher = date("YmdH");
         $orderdate = date('Y-m-d');
-        // dd($voucher);
         $total=0;
         $data = request('data');
         foreach ($data as $value) {
@@ -108,6 +112,14 @@ class OrderController extends Controller
         $order->voucher_no = $voucher;
         $order->orderdate = $orderdate;
         $order->total=$total;
+
         $order->save();
+
+        // $orderdetail = new Orderdetail;
+        // dd($ordetail);
+        // $orderdetail->voucher_no = $voucher;
+        // $orderdetail->recipe_id = $recipe;
+
+        // $orderdetail->qty = $qty;
     }
 }
