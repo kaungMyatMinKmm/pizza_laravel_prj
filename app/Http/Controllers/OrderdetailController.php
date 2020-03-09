@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Orderdetail;
 use App\Order;
 use App\Recipe;
+use App\Size;
 class OrderdetailController extends Controller
 {
     /**
@@ -48,7 +49,9 @@ class OrderdetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderdetail = Orderdetail::findOrfail($id);
+        $recipe=Recipe::find($orderdetail->recipe_id);
+        return view('backend.orderdetails.show',compact('orderdetail','recipe'));
     }
 
     /**
