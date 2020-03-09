@@ -77,8 +77,8 @@
             <a class="collapse-item" href="{{route('crusts.index')}}">Crust</a>
             <a class="collapse-item" href="{{route('toppings.index')}}">Topping</a>
             <a class="collapse-item" href="{{route('sizes.index')}}">Size</a>
-           
-
+            <a class="collapse-item" href="{{route('orders.index')}}">order</a>
+            <a class="collapse-item" href="{{route('orderdetails.index')}}">orderdetail</a>
           </div>
         </div>
       </li>

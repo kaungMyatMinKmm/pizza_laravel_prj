@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Orderdetail;
+use App\Order;
+use App\Recipe;
 class OrderdetailController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class OrderdetailController extends Controller
      */
     public function index()
     {
-        //
+        $orderdetails = Orderdetail::all();
+        return view('backend.orderdetails.index',compact('orderdetails'));
     }
 
     /**
@@ -81,37 +84,59 @@ class OrderdetailController extends Controller
     {
         //
     }
-     public function order_store(Request $request)
+    public function order_store(Request $request)
     {
-        $voucher = date("YmdH");
+        //dd($request);
+        date_default_timezone_set('Asia/Rangoon');
+
+//voucher
+        $voucher = strtotime(date("h:i:s"));
+
+        $orderdate = date('Y-m-d');
+        // dd($orderdate);
+        // $voucher = date("YmdH");
         // $orderdate = date('Y-m-d');
-        dd($voucher);
-        $qty=1;
-        $data = request('data');
-        foreach ($data as $value) {
-           
-            $recipe = new Recipe;
-            $recipe->topping_id = $value['topping_id'];
-            $recipe->crust_id = $value['crust_id'];
-            $recipe->size_id = $value['size_id'];
-            $recipe->qty = $value['qty'];
-            $recipe->price = $value['price'];
-            $recipe->save();
-            $total+=$value['price'];
-
-        }
-
-        $orderdetail = new Orderdetail;
-        $orderdetail->voucher_no = $voucher;
+        $total=0;
+        $datas = request('data');
+        $data=$datas[0];
         
+        $qty=0;
+        
+        
+           
+             $recipe = Recipe::create([
+                "topping_id"=>$data['topping_id'],
+                "crust_id" => $data['crust_id'],
+                 "size_id" => $data['size_id'],
+                "price" => $data['price'],
+             ]);
+            // $recipe->topping_id = $value['topping_id'];
+            // $recipe->crust_id = $value['crust_id'];
+            // $recipe->size_id = $value['size_id'];
+            // $recipe->price = $value['price'];
+            // $recipe->save();
+            //$total+=$value['price'];
+           $qty=$data['qty'];
+           $price=$data['price'];
+           $total=$qty*$price;
+
+        
+        //echo "you make it";
+
+        $order = new Order;
+        $order->voucher_no = $voucher;
+        $order->orderdate = $orderdate;
+        $order->total=$total;
 
         $order->save();
 
-        // $orderdetail = new Orderdetail;
-        // dd($ordetail);
-        // $orderdetail->voucher_no = $voucher;
-        // $orderdetail->recipe_id = $recipe;
+        $orderdetail = new Orderdetail;
+        // dd($orderdetail);
+        $orderdetail->voucher_no = $voucher;
+        $orderdetail->recipe_id = $recipe->id;
 
-        // $orderdetail->qty = $qty;
+        $orderdetail->qty = $qty;
+        $orderdetail->save();
     }
+
 }

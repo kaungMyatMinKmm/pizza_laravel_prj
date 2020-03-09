@@ -26,11 +26,13 @@
                         @foreach($toppings as $row)
                           
                           
-                          <div class="card col-sm-2 m-2 p-2 rounded-circle" >
-                            <div class="card-body rounded-circle text-dark" style="background-color: #B29882">
-                              <h5 class="card-title" >{{$row->name}}</h5>
+                          <div class="card col-lg-4 w-10 h-10 m-2">
+                            <img src="{{$row->photo}}" class="card-img-top" alt="..." style="width: 10; height: 10;">
+                            <div class="card-body px-3">
+          
+                              <h5 class="card-title">{{$row->name}}</h5>
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="table" id="topping" class="select"data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}" >
+                              <input type="radio" name="category" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
                             </div>
                           </div>
                         @endforeach 
