@@ -88,7 +88,7 @@ $.ajaxSetup({
             <h5 class="text-left price" data-price = "${subtotal}">Subtotal: ${subtotal}Ks,</h5></td>
             </td>
             <td colspan="2">
-            <h5 class="text-right">Qty:<input type="number" class="form-control qty" value="1"> </h5>
+            <h5 class="text-right">Qty:<input type="number" class="form-control qty" value="0"> </h5>
 
             </td>
             </td>
@@ -119,17 +119,17 @@ $.ajaxSetup({
 
         var int_price = parseInt(price);
         var total_price = qty*int_price;
-        alert(total_price);
+        // alert(total_price);
         $('.total_price').text(total_price);
 
       })
    
 
-      $('#total').on('click','.createbtn', function () {
+      $('#total').on('click','.createbtn',function () {
          var data="";
              data+= `<button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>`;
              $('.orderbtn').html(data);
-             alert(data);
+             // alert(data);
 
 
         var recipeString=localStorage.getItem("recipe");
@@ -199,19 +199,21 @@ $.ajaxSetup({
         // localStorage.clear();
       })
 
-      $('.orderbtn').on('click','.order_recipe',function(){
-        
+      $('#total').on('click','.order_recipe',function(){
+        // alert('helo');
+
         var recipeString = localStorage.getItem('create');
+        console.log(recipeString);
         if(recipeString)
         {
           var recipeArray = JSON.parse(recipeString);
-          $.post("/order_store",{data:recipeArray},function(res){
-            console.log(res);
+          $.post("/backend/order_store",{data:recipeArray},function(res){
+            // console.log(res);
           })
 
 
         }
-
+        localStorage.clear();
 
         localStorage.clear();
        
@@ -221,6 +223,21 @@ $.ajaxSetup({
 
 
       });
+
+      // $('.order_recipe').click(function(){
+
+      //   var recipeString = localStorage.getItem('create');
+      //   console.log(recipeString);
+      //   if(recipeString)
+      //   {
+      //     var recipeArray = JSON.parse(recipeString);
+      //     $.post("/backend/order_store",{data:recipeArray},function(res){
+      //       // console.log(res);
+      //     })
+          
+      //   }
+
+      // })
 
 
 
