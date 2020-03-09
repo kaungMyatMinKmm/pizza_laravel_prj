@@ -28,6 +28,7 @@ Route::resource('crusts','CrustController');
 Route::resource('toppings','ToppingController');
 
 Route::resource('sizes','SizeController');
+Route::resource('orderdetails','OrderdetailController');
 
 // Route::resource('tastes','TasteController');
 // Route::resource('sizes','SizeController');

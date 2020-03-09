@@ -122,6 +122,7 @@ $.ajaxSetup({
          var data="";
              data+= `<button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>`;
              $('.orderbtn').html(data);
+             alert(data);
 
 
         var recipeString=localStorage.getItem("recipe");
@@ -193,6 +194,7 @@ $.ajaxSetup({
 
 
       $('.orderbtn').on('click','.order_recipe',function(){
+        
         var recipeString = localStorage.getItem('create');
         if(recipeString)
         {
@@ -200,7 +202,12 @@ $.ajaxSetup({
           $.post("/order_store",{data:recipeArray},function(res){
             console.log(res);
           })
+
         }
+
+
+        localStorage.clear();
+       
       })
 
 

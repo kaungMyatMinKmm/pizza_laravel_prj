@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Recipe;
+use App\Orderdetail;
+use Illuminate\Support\Facades\URL;
 
 class OrderdetailController extends Controller
 {
@@ -24,6 +27,8 @@ class OrderdetailController extends Controller
     public function create()
     {
         //
+     
+        
     }
 
     /**
@@ -35,6 +40,9 @@ class OrderdetailController extends Controller
     public function store(Request $request)
     {
         //
+     
+  
+
     }
 
     /**
