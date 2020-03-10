@@ -22,9 +22,9 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-
         return view('backend.orders.index',compact('orders'));
     }
+
 
     /**
      * Show the form for creating a new resource.

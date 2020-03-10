@@ -25,14 +25,14 @@
                  <div class="row ">
                         @foreach($toppings as $row)
                           
-                          
-                          <div class="card col-sm-2 m-2 p-2 " > 
-                            <img src="{{$row->photo}}" class="card-img-top"style="width: 10; height: 10;">
-                            <div class="card-body text-dark" style="background-color: #B29882">
-                              <h5 class="card-title" >{{$row->name}}</h5>
+                          <div class="card col-lg-4 w-10 h-10 m-2">
+                            <img src="{{$row->photo}}" class="card-img-top" alt="..." style="width: 150; height: 150;">
+                            <div class="card-body px-3">
+          
+                              <h5 class="card-title">{{$row->name}}</h5>
 
                               <!-- <p class="card-text"></p> -->
-                              <input type="radio" name="table" id="topping" class="select"data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}" >
+                              <input type="radio" name="category" class="select"  value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
                             </div>
                           </div>
                         @endforeach 
@@ -47,7 +47,7 @@
                           
                           
                           <div class="card col-lg-4 w-10 h-10 m-2">
-                            <img src="{{$row->photo}}" class="card-img-top" alt="..." style="width: 10; height: 10;">
+                            <img src="{{$row->photo}}" class="card-img-top" alt="..." style="width: 150; height: 150;">
                             <div class="card-body px-3">
           
                               <h5 class="card-title">{{$row->name}}</h5>
@@ -65,7 +65,7 @@
                        @foreach($sizes as $row)
                       
                           <div class="card col-lg-4 w-10 h-10 m-2">
-                             <img src="{{$row->photo}}" class="card-img-top"style="width: 10; height: 10;">
+                            
                             <div class="card-body">
                               <h5 class="card-title">{{$row->name}}</h5>
                               <input type="radio" name="size" class="select" value="{{$row->id}}" data-id="{{$row->id}}" data-name="{{$row->name}}" data-price="{{$row->price}}">
@@ -102,3 +102,43 @@
 
   
 @endsection
+
+  <!-- modal start -->
+  <div class="modal fade" id="detailOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="container row">
+          <div class="col-lg-12 ">
+            <h3 class="text-center" id="modalTitle">Pizza POS</h3>
+            <h5>Address: Yangon</h5>
+            <h5>Ph: 09975345664</h5>
+          </div>
+        </div>
+        <div class="modal-body ">
+          <table class="table">
+            <thead>
+              <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  
+              </tr>
+            </thead>
+
+            <tbody id="orderdetail">
+            </tbody>
+
+            <tfoot id="totaldetail">
+            </tfoot>
+            
+          </table>  
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal end -->

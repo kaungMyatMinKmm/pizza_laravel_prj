@@ -41,6 +41,8 @@ Route::resource('recipes','RecipeController');
 
 Route::resource('orders','OrderController');
 Route::post('order_store','OrderController@order_store')->name('order_store');
+Route::resource('orderdetails','OrderdetailController');
+Route::post('order_store','OrderdetailController@order_store')->name('order_store');
 
 });
 

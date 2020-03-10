@@ -112,7 +112,7 @@ $.ajaxSetup({
 
       }
       
-      $('.qty').change(function(){
+      $('#total').on("change",".qty",function(){
 
         var qty = $(this).val();
         var price = $('.price').data('price');
@@ -122,12 +122,14 @@ $.ajaxSetup({
         // alert(total_price);
         $('.total_price').text(total_price);
 
+
       })
    
 
       $('#total').on('click','.createbtn',function () {
          var data="";
-             data+= `<button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>`;
+             data+= `<button class="btn btn-secondary btn-block print"  style="background-color:#00FF00;">Print</button>
+                    <button class="btn btn-secondary btn-block order_recipe"  style="background-color:#673AB7;">Order</button>`;
              $('.orderbtn').html(data);
              // alert(data);
 
@@ -197,13 +199,57 @@ $.ajaxSetup({
         localStorage.setItem("create",createData);
        // });
         // localStorage.clear();
+
+      })
+
+      $('#total').on('click', '.print',function () {
+
+        var recipeString = localStorage.getItem('recipe');
+        var createString = localStorage.getItem('create');
+        // alert(recipeString);
+        if (recipeString) {
+          var recipeArray = JSON.parse(recipeString);
+          // alert(recipeArray);
+          var html=""; var j=1; var subtotal=0; var tfoot="";
+          $.each(recipeArray,function (i,v) {
+            var name = v.name;
+            var price = v.price;
+            
+
+            html+=`<tr>
+            <td>${j++}</td>
+            <td>${name}</td>
+            <td>${price}</td>
+            </tr> `;
+
+            
+          });
+          $('#orderdetail').html(html);
+
+        }
+
+        if (recipeArray) {
+          var createArray = JSON.parse(createString);
+          $.each(createArray,function (i,v) {
+            var qty =v.qty;
+            var totalPrice =v.price*qty;
+            // console.log(qty);
+            tfoot+=`<tr>
+            <td><h4>Total:</h4></td>
+            <td><h4>${totalPrice}Ks</h4></td>
+            </tr>`
+          });
+          $('#totaldetail').html(tfoot);
+        }
+        // $('#modalTitle').text(name);
+        $('#detailOrder').modal('show');
       })
 
       $('#total').on('click','.order_recipe',function(){
         // alert('helo');
 
         var recipeString = localStorage.getItem('create');
-        console.log(recipeString);
+        // console.log(recipeString);
         if(recipeString)
         {
           var recipeArray = JSON.parse(recipeString);
@@ -216,6 +262,7 @@ $.ajaxSetup({
         localStorage.clear();
 
         localStorage.clear();
+        location.reload();
        
 
           
