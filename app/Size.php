@@ -9,4 +9,8 @@ class Size extends Model
     protected $fillable = [
         'name', 'price',
     ];
+    public function size($value='')
+    {
+    	return $this->hasMany('App\Size');
+    }
 }

@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Recipe;
+
 use App\Orderdetail;
 use Illuminate\Support\Facades\URL;
-
-
-
+use App\Size;
 class OrderdetailController extends Controller
 {
     /**
@@ -57,7 +56,9 @@ class OrderdetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderdetail = Orderdetail::findOrfail($id);
+        $recipe=Recipe::find($orderdetail->recipe_id);
+        return view('backend.orderdetails.show',compact('orderdetail','recipe'));
     }
 
     /**
@@ -91,7 +92,9 @@ class OrderdetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orderdetail = Orderdetail::find($id);
+        $orderdetail->delete();
+        return redirect()->route('orderdetails.index');
     }
     public function order_store(Request $request)
     {

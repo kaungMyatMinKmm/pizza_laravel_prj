@@ -40,7 +40,7 @@
 							<td>{{$row->qty}}</td>
 							<!-- <td>{{$row->price}}</td> -->
 							<td>
-								
+								<a href="{{route('orderdetails.show',$row->id)}}" class="btn btn-info">Detail</a>
 								<form method="post" action="{{route('orderdetails.destroy',$row->id)}}" onsubmit="return confirm('Are You Sure?')" class="d-inline-flex">
 										@csrf
 										@method('DELETE')

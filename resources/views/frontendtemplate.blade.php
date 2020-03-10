@@ -38,7 +38,7 @@
                 <a class="nav-link" href="{{route('aboutpage')}}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign In| Sign Up</a>
+                <a class="nav-link" href="{{route('crusts.index')}}">Admin</a>
               </li>
       				
     			</ul>

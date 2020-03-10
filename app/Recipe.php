@@ -12,6 +12,19 @@ class Recipe extends Model
 
     public function orderdetails($value='')
     {
-    	return $this->hasMany('App\Orderdetail');
+    	return $this->hasMany('App\Ordetail');
     }
+    public function topping($value='')
+   {
+   	 return $this->belongsTo('App\Topping');
+   }
+    public function crust($value='')
+   {
+   	 return $this->belongsTo('App\Crust');
+   }
+    public function size($value='')
+   {
+   	 return $this->belongsTo('App\Size');
+   }
+
 }

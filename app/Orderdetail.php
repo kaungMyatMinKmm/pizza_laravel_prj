@@ -10,8 +10,10 @@ class Orderdetail extends Model
         'voucher_no', 'recipe_id', 'qty'
     ];
 
+
     public function recipe($value='')
     {
     	return $this->belongsTo('App\Recipe');
     }
+
 }
